@@ -446,7 +446,27 @@ form button {
 	grid-column: 2 / 3;
 }
 
+.site {
+	height: 100%;
+	display: grid;
+	grid-template-columns: 20% 1fr;
+	grid-template-rows: 10% 80% 10%;
+}
 
+.site header {
+	grid-column: 1 / -1;
+	background: tomato;
+}
+.site aside {
+	background: blue;
+}
+.site main {
+	background: green;
+}
+.site footer {
+	grid-column: 1 / -1;
+	background: gray;
+}
 
 
 
