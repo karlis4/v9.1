@@ -398,9 +398,9 @@ div > button {
 
 /* 19 */
 
-/** {
+* {
 	box-sizing: border-box;
-}*/
+}
 
 body {
 	display: flex;
@@ -408,26 +408,21 @@ body {
 	justify-content: center;
 }
 
-/*.wrapper {
-	background: gray;
-	/*width: 500px;
-}*/
-
-
 .container {
 	display: grid;
-	/*justify-items: center;
-	align-items: center;*/
-	/*grid-template: repeat(3, auto) / repeat(3, 1fr);*/
-	/*grid-template-columns: 1fr 1fr 1fr;*/
-	grid-template-columns: repeat(3, 300px);
-    grid-template-rows: 300px;
-	/*grid-column-gap: 30px;
-	grid-row-gap: 20px;*/
-	grid-auto-rows: 300px;
-	/*grid-auto-columns: 300px;*/
-	background: gray;
+	grid-template-columns: repeat(3, 1fr);
+	/*grid-template-rows: repeat(3, 1fr);
+	grid-template-areas:
+		"a a b"
+		"a a b"
+		"c c b";*/
 }
+
+/*.wrapper {
+	background: red;
+	width: 500px;
+}*/
+
 
 .child {
 	display: flex;
@@ -435,13 +430,21 @@ body {
 	align-items: center;
 	color: white;
 	font-size: 50px;
-	width: 150px;
-	height: 150px;
+	min-width: 150px;
+	min-height: 150px;
 	border-radius: 5px;
 	border: 1px solid black;
 }
 
+form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: repeat(4, 1fr);
+}
 
+form button {
+	grid-column: 2 / 3;
+}
 
 
 
@@ -462,13 +465,19 @@ body {
 
 
 .child1 {
-	/*width: 200px;*/
+	/*grid-column: 1 / -1;*/
 	background: #FF6600;
+	/*grid-column: 1 / span 3;*/
+	grid-area: a;
 }.child2 {
+	grid-area: b;
 	/*width: 300px;*/
 	/*align-self: start;*/
+	/*grid-column: 2 / 3;
+	grid-row: 1 / 4;*/
 	background: #CC0033;
 }.child3 {
+	grid-area: c;
 	/*align-self: end;*/
 	background: #990066;
 }.child4 {
