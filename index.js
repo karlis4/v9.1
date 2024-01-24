@@ -683,6 +683,285 @@ const sum = calculate(100, 190);
 
 console.log(sum);
 
+console.log(sum);*/
+
+
+/*const films1 = {
+    title: 'Все фильмы',
+    films: [
+        {name: 'Хроники Нарнии'},
+        {name: 'Человек-паук'},
+        {name: 'Что-то ещё'},
+    ]
+}*/
+
+/*const myFilms = getFilms();
+
+function getFilms(title = 'Все фильмы') {
+
+    return {
+        filmTitle: title,
+        films: getFilmsArray(),
+    };
+
+    return result;
+}
+
+function getFilmsArray() {
+    const films = [];
+
+    addNewFilm(films, { name: 'Хроники Нарнии' }, 0);
+	addNewFilm(films, { name: 'Человек паук' }, 1);
+	addNewFilm(films, { name: 'Что-то еще' }, 2);
+	addNewFilm(films, { name: 'Плохой фильм' });
+
+
+    function addNewFilm(film, index) {
+        if (index === undefined) {
+            console.log('этот фильм не будет добавлен, тк нет индекса')
+            return;
+        }
+    
+        films[index] = film;
+    }
+
+    return films;
+}
+
+console.log(myFilms);
+
+function calc(a, b, logger) {
+ 	logger('Алекс');
+
+
+ 	return a + b;
+ }
+
+  calc(1, 2, function (name) {
+ 	console.log(name, 'Я вызвалась');
+ });
+
+
+ calc(1, 2, (name) => {
+ 	console.log(name, 'Я вызвалась');
+ });*/
+
+ /*const data = [
+    {id: 10, name: 'Alex', money: 1000},
+    {id: 11, name: 'John', money: 500},
+    {id: 55, name: 'Anna', money: 5500},
+ ];
+
+ const alexStr = getUsersMoney({id: 10}, (user) => {
+    const str = 'У' + user.name + ' ' + user.money + ' Р';
+    
+    return str;
+ });
+
+console.log(alexStr);
+
+ /*getUsersMoney({id: 10}, (user) => {
+    const str = 'John has $' + user.money;
+    console,log(str)
+ });
+
+ getUsersMoney({id: 10}, (user) => {
+    const str = user.name + ' = ' + user.money
+    console,log(str)
+ });*/
+
+/*function getUsersMoney(userInfo, callback) {
+    const id = userInfo.id
+
+    let result = null;
+
+    for (let i = 0; i < data.length; i++) {
+        const user = data[i];
+
+        if (user && user.id === id) {
+            result = user;
+        }
+    }
+    const str = callback(result);
+
+    return str; 
+}*/
+
+
+
+
+
+
+       /*                                 11                             */
+
+
+       /*(function test() {
+        console.log('test');
+       })();
+
+
+
+       const name = 'John';
+       let final = 0;
+       
+       
+        if (name === 'Alex') {
+        	const product = createProduct('Арбуз', 100, 3);
+        	const alexCart = [product];
+       
+        	const debt = 150;
+       
+        	final = calculateFinalPrice(alexCart);
+        	final += debt;
+
+            console.log('Финальная цена:', final + debt);
+        }
+        else if (name === 'John') {
+        	const product = createProduct('Хлеб', 30, 2);
+        	const johnCart = [product];
+       
+        	const debt = 50;
+       
+        	//calculateFinalPrice(johnCart, (price) => {
+        	//	console.log('Финальная цена:', price + debt);
+        	//});
+
+            final = calculateFinalPrice(johnCart);
+
+            console.log('Финальная цена:', final + debt);
+        }
+        else {
+        	const product = createProduct('Молоко', 50, 1);
+        	const userCart = [product];
+       
+        	final = calculateFinalPrice(userCart);
+        }
+       
+       function createProduct(name, price, count) {
+           if (name === '') {
+               name = 'Неизвестный продукт';
+               console.log('Вы задали неправильное имя продукта');
+           }
+       
+           if (typeof price !== 'number') {
+               price = 0;
+               console.log('Вы задали неправильную цену');
+           }
+       
+           if (typeof count !== 'number') {
+               count = 0;
+               console.log('Вы задали неправильное количество');
+           }
+       
+           return {
+               name,
+               price,
+               count,
+           };
+       }
+       
+       function calculateFinalPrice(cart) {
+               let finalPrice = 0;
+
+               if (!cart || cart.length === 0) {
+                return finalPrice;
+               }
+       
+               for (let i = 0; i < cart.length; i++) {
+                   const product = cart[i];
+       
+                   finalPrice += (product.price * product.count);
+               }
+       
+               return finalPrice;
+       }
+
+
+
+//const add = (a) => {
+//    return (b) => {
+//        return a + b;
+//    }
+//}
+
+//const func = add();
+//func();
+
+/*const log = (time) => {
+    return (message) => {
+        return time + ' - ' + message;
+    }
+}
+
+const logWithTime = log('9:00');
+const logWithTime2 = log('19:00');
+
+
+setTimeout(() => {
+    const message = logWithTime('Пользователь нажал войти')
+    console.log(message);
+}, 1000);
+
+setTimeout(() => {
+    const message = logWithTime('Пользователь нажал выйти')
+    console.log(message);
+}, 2000);
+
+
+//const result = add(10)(15);
+//console.log(result);*/
+
+
+
+
+
+/*                        12                       */
+
+//const button = window.document.querySelector('test1');
+//console.log(button);
+
+
+
+
+/*                              13                       */
+
+
+
+/*const value = 2;
+const value2 = true;
+const value3 = 'Строка';
+
+console.log('Привет' + value + ' мир');
+console.log(`Привет + ${value} +  мир`);
+console.log(`${value}-${value2}:${value3}`);*/
+
+const div = document.querySelector('div');
+
+
+for (let i = 0; i < div.children.length; i++) {
+    const element = div.children[i];
+
+    if (element.tagName === 'UL') {
+        console.log('SPAN-ELEMENT');
+        element.innerHTML = `
+            <ul>
+                <li>erste</li>
+                <li>zweite</li>
+                <li>dritte</li>
+            </ul>        
+        
+        
+        `;
+
+    }
+    console.log(element);
+}
+
+
+//div.innerHTML = 'Hello world';
+//div.textContent = 'Hello world';
+
+console.log(div);
 
 
 
