@@ -1016,3 +1016,1098 @@ let shoppingList = {
 }
 
 shoppingList.addItem().removeItem();
+
+// const privateProperty = Symbol('privateProperty');
+
+// let obj = {
+//   publicProperty: 'I am public',
+//   [privateProperty]: 'I am private'
+// };
+
+// console.log(obj.publicProperty); // Output: I am public
+// console.log(obj[privateProperty]);
+
+
+// let Person = {
+//   name: 'John',
+//   age: 25,
+//   gender: 'man',
+
+//   [Symbol.toPrimitive](hint) {
+//     alert(hint);
+//     hint = this.name;
+//     return alert(`Ваше имя: ${hint}`);
+//   },
+
+//   toString() {
+//     alert(`Пол: ${this.gender}`);
+//     return this;
+//   },
+
+//   valueOf() {
+//     alert(`Возраст: ${this.age}`)
+//     return this;
+//   }
+// }
+
+// alert(Person);
+// Person.toString().valueOf();
+
+
+
+
+
+//                                          1 (Типы данных)
+
+
+
+////////////////////////////////////////////////////////////////////////
+// let calc = () => {
+//     let num1 = +prompt('Введите первое число:', '');
+//     let num2 = +prompt('Введите второе число:', '');
+
+//     return num1 + num2;
+// }
+
+// let result = calc();
+
+// alert(result);
+//////////////////////////////////////////////////////////////////////////
+
+
+
+
+//////////////////////////////////////////////////////////////////////////
+// function readNumber() {
+//     let num1 = +prompt('Введите число:', '');
+
+  
+//         for (let i = 0; i <= num1; num1++) {
+//         num1 = +prompt('Введите число ещё раз:', '');
+
+//         if (num1 != null && num1 != '') {
+//         return alert(`Вы, наконец-то, ввели число: ${num1}`);
+//         } else if (num1 == 0) return alert(null);
+//     } 
+        
+//     return alert(`Число: ${num1}`);
+    
+    
+    
+// }
+
+// readNumber();
+////////////////////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// function random(min, max) {
+//     return min + Math.random() * (max - min);
+//   }
+  
+//   alert( random(1, 5) );
+//   alert( random(1, 5) );
+//   alert( random(1, 5) );
+/////////////////////////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// function randomInteger(min, max) {
+//     return alert(Math.floor(min + Math.random() * (max - min)));
+// }
+
+// randomInteger(1, 5);
+////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+//                                              3
+
+
+
+////////////////////////////////////////////////////////
+// let ucFirst = (str) => {
+//     let a1 = str[0].toUpperCase();
+//     let a2 = str.slice(1);
+
+//     alert(a1 + a2);
+// }
+
+// ucFirst('вася');
+////////////////////////////////////////////////////////
+
+
+
+////////////////////////////////////////////////////////////////////
+// let checkSpam = (str) => {
+
+//         let str1 = str.toLowerCase();
+//         let str2 = str.toUpperCase();
+
+//         if (str1.includes('viagra') || str1.includes('xxx') || 
+//             str2.includes('XXX')) {
+//             return alert(true);
+//         } else return alert("Спам");
+    
+// }
+
+
+// checkSpam('buy ViAgRA now');
+// checkSpam('free xxxxx');
+// checkSpam("innocent rabbit");
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// function truncate(str, maxlength) {
+//         if (str.length > maxlength) {
+//             return alert(str.slice(0, 19) + '\u2026');
+//         }
+
+//     return alert(str);
+// }
+
+// truncate("Вот, что мне хотелось бы сказать на эту тему:", 20);
+// truncate("Всем привет!", 20);
+///////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////
+// function extractCurrencyValue(str) {
+
+
+//     if (str.at[0] !== 'number') {
+//         return str.slice(1);
+//     }
+// }
+
+// alert( extractCurrencyValue('$120'));
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+// function extractCurrencyValue(str) {
+//     if (isNaN(str[0])) {
+//         return alert(str.slice(1));
+//     }
+//     return parseFloat(str.slice(1));
+// }
+
+// alert(extractCurrencyValue('\$120'));
+//////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+//                                              4
+
+
+//////////////////////////////////////////////////////////////////////
+// let styles = ["Джаз", "Блюз"];
+// styles.push("Рок-н-ролл");
+// styles[Math.floor((styles.length - 1) / 2)] = "Классика";
+// alert( styles.shift() );
+// styles.unshift("Рэп", "Регги");
+//////////////////////////////////////////////////////////////////////
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+// let arr = [];
+
+// function sumInput(numbers) {
+//     let enter = +prompt('Введите число:', 0);
+//     //numbers.push(enter);
+
+//     for(let i = 0; i < enter; enter++) {
+//         let enter = +prompt('Введите число:', 0);
+        
+//         if (enter === '' || typeof enter !== 'number' || enter === null){
+//             return numbers += numbers[i];
+//         } else if (enter === 0) {
+//              enter = +prompt('Введите число:', 0);
+//         } else numbers.push(enter);
+//     }
+
+//     for (let i = 0; i < numbers.length; i++) {
+//         return enter += numbers[i]
+//     }
+
+   
+
+// }
+
+// sumInput(arr);
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+// function sumInput() {
+
+//     let numbers = [];
+  
+//     while (true) {
+  
+//       let value = prompt("Введите число", 0);
+  
+//       // Прекращаем ввод?
+//       if (value === "" || value === null || !isFinite(value)) break;
+  
+//       numbers.push(+value);
+//     }
+  
+//     let sum = 0;
+//     for (let number of numbers) {
+//       sum += number;
+//     }
+//     return sum;
+//   }
+  
+//   alert( sumInput() );
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+// function getMaxSubSum(arr) {
+
+//     let sum = 0;
+//     for (let i = 0; i < arr.length; i++) {
+//         numb = arr[i];
+//         if (numb < 0) continue;
+//         else sum += numb;
+//         alert(sum);
+//     }
+
+//     return;
+   
+// }
+
+
+//getMaxSubSum([-1, 2, 3, -9]); 
+// getMaxSubSum([2, -1, 2, 3, -9]);
+// getMaxSubSum([-1, 2, 3, -9, 11]);
+// getMaxSubSum([-2, -1, 1, 2]);
+// getMaxSubSum([100, -9, 2, -3, 5]); 
+// getMaxSubSum([1, 2, 3]);
+
+// function getMaxSubSum(arr) {
+//     let maxSum = 0;
+//     let partialSum = 0;
+  
+//     for (let item of arr) { // для каждого элемента массива
+//       partialSum += item; // добавляем значение элемента к partialSum
+//       maxSum = Math.max(maxSum, partialSum); // запоминаем максимум на данный момент
+//       if (partialSum < 0) partialSum = 0; // ноль если отрицательное
+//     }
+  
+//     return maxSum;
+//   }
+  
+//   alert( getMaxSubSum([-1, 2, 3, -9]) ); // 5
+//   alert( getMaxSubSum([-1, 2, 3, -9, 11]) ); // 11
+//   alert( getMaxSubSum([-2, -1, 1, 2]) ); // 3
+//   alert( getMaxSubSum([100, -9, 2, -3, 5]) ); // 100
+//   alert( getMaxSubSum([1, 2, 3]) ); // 6
+//   alert( getMaxSubSum([-1, -2, -3]) ); // 0
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+// let arr = ['Вася', 'Петя', 'Ольга', 'Олег', 'Маша', 'Саша', 'Адрей'];
+// let startEnter = +prompt('Введите  начальный индекс:', 0);
+// let endEnter = +prompt('Введите конечный индекс:', 0);
+
+// function removeElement(arr, startIndex, endIndex) {
+//   let newArr = [];
+
+//   arr.splice(startIndex, endIndex);
+
+//   //arr.forEach((item, index) => {
+//     alert(newArr = arr);
+//   //});
+  
+  
+// }
+
+
+
+// removeElement(arr, startEnter, endEnter);
+////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+// let arr = ['Вася', 'Петя', 'Ольга', 'Олег', 'Маша', 'Саша', 'Адрей'];
+// let startEnter = +prompt('Введите  начальный индекс:', 0);
+// let endEnter = +prompt('Введите конечный индекс:', 0);
+
+// function getSubArray(arr, start, end) {
+//   let newArr = [];
+//   newArr = arr.slice(start, end);
+
+//   return newArr;
+// }
+
+
+// let result = getSubArray(arr, startEnter, endEnter);
+
+// alert(result);
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+// let arr1 = [];
+// let arr2 = [];
+
+
+
+// function mergeArrays(arr1, arr2) {
+//   let newArr = [];
+
+//   while (true) {
+//     let joinTo1 = prompt('Введите  значения для 1 массива:', '');
+//     if (isFinite(joinTo1) || joinTo1 === null) break;
+
+//     arr1.push(joinTo1);
+
+//   }
+
+//   while (true) {
+//     let joinTo2 = prompt('Введите  значения для 2 массива:', '');
+//     if (isFinite(joinTo2) || joinTo2 === null) break;
+
+//     arr2.push(joinTo2);
+
+//   }
+
+//   newArr = arr1.concat(arr2);
+
+  
+//   alert(newArr);
+
+//   return newArr;
+// }
+
+
+// let result = mergeArrays(arr1, arr2);
+
+//alert(result);
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// let arr = ['Вася', 'Петя', 'Ольга', 'Олег', 'Маша', 'Саша', 'Андрей'];
+
+// function logElements(arr) {
+//   let result = '';
+//   arr.forEach((item, index) => {
+//     result += `Элемент: ${item}, Индекс: ${index}\n`;
+//   });
+//   return result;
+// }
+
+// alert(logElements(arr));
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+
+// let users = [
+//   {id: 1, name: "Вася"},
+//   {id: 2, name: "Петя"},
+//   {id: 3, name: "Маша"}
+// ];
+
+// function findElement(arr, callback) {
+//   return callback(arr);
+// }
+
+
+// function callback(arr) {
+//   let newArss = arr.filter(item => item.id < 3);
+//   return newArss;
+
+// }
+
+
+// alert(findElement(users, callback));
+
+
+
+// [1, -2, 15, 2, 0, 8].sort(function(a, b) {
+//   alert( a + " <> " + b );
+//   return a - b;
+// });
+
+// function compareNumeric(a, b) {
+//   if (a > b) return 1;
+//   if (a == b) return 0;
+//   if (a < b) return -1;
+// }
+
+// let arr = [ 1, 2, 15 ];
+
+// arr.sort(compareNumeric);
+
+// alert(arr);
+
+
+
+
+///////////////////////////////////////////////////////////////////////
+// let obj = [{name: 'Viktor', age: 21}, 
+//           {name: 'Alex', age: 17}, 
+//           {name: 'Sasha', age: 29}, 
+//           {name: 'Oleg', age: 16},
+//           {name: 'Vlad', age: 23},];
+
+
+// function ObjectAverage(mass) {
+//   let newArray  = mass.map(item => {
+  
+//     if (item.age > 18) {
+//       return {name: item.name.toUpperCase()};
+//     } else return item;
+// });
+
+// return newArray;
+// }
+
+
+// console.log(ObjectAverage(obj));
+/////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////
+// let obj = [{name: 'Viktor', age: 21}, 
+//           {name: 'Alex', age: 17}, 
+//           {name: 'Sasha', age: 29}, 
+//           {name: 'Oleg', age: 16},
+//           {name: 'Vlad', age: 21},];
+
+
+// function ObjectAverage(mass) {
+
+
+//   let newArray  = mass.sort(function(a, b) {
+//     if (b.age !== a.age) {
+//     return b.age - a.age;
+//     } else return a.name.localeCompare(b.name);
+//   }); 
+  
+   
+// return newArray;
+// }
+
+
+// console.log(ObjectAverage(obj));
+//////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////
+// let obj = [{firstname: 'Viktor', lastname: 'Viktorovich'}, 
+//           {firstname: 'Alexsei', lastname: 'Alexseevich'}, 
+//           {firstname: 'Vasilii', lastname: 'Vasiljecich'}, 
+//           {firstname: 'Danil', lastname: 'Danilovich'},
+//           {firstname: 'Oleg', lastname: 'Olegovich'},];
+
+// function ObjectAverage(mass) {
+//     let str = mass.join(',');
+
+//     return str;
+// }
+
+
+// console.log(ObjectAverage(obj));
+///////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+//                                                        5
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+// let arr = [5, 3, 8, 1];
+
+
+// function filterRange(arr, a, b) {
+
+//     let newArr = arr.filter((item) => item >= a && item <= b);
+
+//     return newArr;
+// }
+
+
+// let filtered = filterRange(arr, 1, 4);
+
+// alert( filtered ); 
+
+// alert( arr ); 
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+// function camelize(str) {
+//     return str
+//       .split('-') // разбивает 'my-long-word' на массив ['my', 'long', 'word']
+//       .map(
+//         // Переводит в верхний регистр первые буквы всех элементом массива за исключением первого
+//         // превращает ['my', 'long', 'word'] в ['my', 'Long', 'Word']
+//         (word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1)
+//       )
+//       .join(''); // соединяет ['my', 'Long', 'Word'] в 'myLongWord'
+//   }
+
+//   alert(camelize('my-long-word'));
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+// let arr = [5, 3, 8, 1];
+
+
+// function filterRangeInPlace(arr, a, b) {
+//     arr = arr.filter((item) => {
+//         item >= a && item <= b 
+
+//         if(!(item >= a || item <= b)) return arr.splice(item, 1);
+//     });
+
+    
+//     return arr;
+    
+// }
+
+
+
+
+
+// let filtered = filterRangeInPlace(arr, 1, 4); // удалены числа вне диапазона 1..4
+
+// alert( filtered );
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// let arr = [5, 3, 8, 1];
+
+// function filterRangeInPlace(arr, a, b) {
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] < a || arr[i] > b) {
+//             arr.splice(i, 1); // Удаляем элемент, не соответствующий диапазону
+//             i--; // Возвращаемся на одну позицию назад, чтобы проверить новый элемент на этом же индексе
+//         }
+//     }
+//     return arr; // Необязательно, так как массив изменяется по месту
+// }
+
+// let filtered = filterRangeInPlace(arr, 1, 4); // удалены числа вне диапазона 1..4
+
+// alert(filtered);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+/////////////////////////////////////////
+// let arr = [5, 2, 1, -10, 8];
+
+
+// arr.sort((a, b) => b - a);
+
+// alert( arr );
+//////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////////
+// let arr = ["HTML", "JavaScript", "CSS"];
+
+
+// function copySorted(arr) {
+//     let newArr = arr.sort((a, b) => a.localeCompare(b));
+
+//     return newArr;
+// }
+
+
+
+// let sorted = copySorted(arr);
+
+// alert( sorted ); // CSS, HTML, JavaScript
+// alert( arr ); // HTML, JavaScript, CSS (без изменений)
+///////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// function Calculator() {
+//     // Методы вычитания и сложения
+//     this.methods = {
+//       "-": (a, b) => a - b,
+//       "+": (a, b) => a + b
+//     };
+  
+//     // Метод для выполнения математических операций
+//     this.calculate = function(str) {
+//       let split = str.split(' '),
+//           a = +split[0],
+//           op = split[1],
+//           b = +split[2];
+  
+//       // Проверка наличия оператора и числовых значений a и b
+//       if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+//         return NaN; // Возвращаем NaN, если операция невозможна
+//       }
+  
+//       // Выполняем математическую операцию с помощью соответствующего метода
+//       return this.methods[op](a, b);
+//     };
+  
+//     // Метод для добавления новых методов (операций)
+//     this.addMethod = function(name, func) {
+//       this.methods[name] = func; // Добавляем новый метод в объект methods
+//     };
+//   }
+
+
+//   // Создаем новый экземпляр калькулятора
+// let calc = new Calculator();
+
+// // Добавляем новый метод (умножение)
+// calc.addMethod("*", (a, b) => a * b);
+
+// // Выполняем вычисления с помощью калькулятора
+// console.log(calc.calculate("5 + 3")); // Output: 8
+// console.log(calc.calculate("10 - 4")); // Output: 6
+// console.log(calc.calculate("2 * 6")); // Output: 12
+// console.log(calc.calculate("8 / 2")); // Output: NaN (деление не определено)
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// let arr = [5, 3, 8, 1];
+
+// function filterRangeInPlace(arr, a, b) {
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] < a || arr[i] > b) {
+//             arr.splice(i, 1); // Удаляем элемент, не соответствующий диапазону
+//             i--; // Возвращаемся на одну позицию назад, чтобы проверить новый элемент на этом же индексе
+//         }
+//     }
+//     return arr; // Необязательно, так как массив изменяется по месту
+// }
+
+// let filtered = filterRangeInPlace(arr, 1, 4); // удалены числа вне диапазона 1..4
+
+// alert(filtered); // Выведет: 3,1
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+/////////////////////////////////////////////////////
+// let user = [{ name: "Вася", age: 25 },
+//             { name: "Петя", age: 30 },
+//             { name: "Маша", age: 28 }]
+
+
+
+// let names = user.map(item => {
+//   return item.name;
+// })
+
+// alert( names );
+///////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+// let user = [{ name: "Вася", surname: "Пупкин", id: 1 },
+//             { name: "Петя", surname: "Иванов", id: 2 },
+//             { name: "Маша", surname: "Петрова", id: 3 }]
+
+
+// let usersMapped = user.map(item => {
+//   return {fullName: `${item.name} ${item.surname}`, id: item.id};
+// })
+
+// alert( usersMapped[0].id );
+// alert( usersMapped[0].fullName );
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// let users = [{ name: "Вася", age: 25 },
+//             { name: "Петя", age: 30 },
+//             { name: "Маша", age: 28 }];
+
+
+// function sortByAge(arr) {
+//   let newArr = arr.map(item => {return item.name});
+
+//   newArr = newArr.sort();
+
+//   return newArr;
+// };
+
+
+
+// alert(sortByAge(users));
+
+// alert(users[0].name); 
+// alert(users[1].name); 
+// alert(users[2].name);
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+/////////////////////////////////////////////////////////////////////////
+// function shuffle(array) {
+//   for (let i = array.length - 1; i > 0; i--) {
+//     let j = Math.floor(Math.random() * (i + 1));
+//     [array[i], array[j]] = [array[j], array[i]];
+//   }
+// }
+
+// // подсчёт вероятности для всех возможных вариантов
+// let count = {
+//   '123': 0,
+//   '132': 0,
+//   '213': 0,
+//   '231': 0,
+//   '321': 0,
+//   '312': 0
+// };
+
+// for (let i = 0; i < 1000000; i++) {
+//   let array = [1, 2, 3];
+//   shuffle(array);
+//   count[array.join('')]++;
+// }
+
+// // показать количество всех возможных вариантов
+// for (let key in count) {
+//   alert(`${key}: ${count[key]}`);
+// }
+//////////////////////////////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// let user = [{ name: "Вася", age: 25 },
+//             { name: "Петя", age: 30 },
+//             { name: "Маша", age: 28 }]
+
+
+// function getAverageAge(users) {
+//   let newArr = users.map(item => {
+//     return item.age
+//   });
+
+//   let sum = newArr.reduce((acc, item)=> acc + item, 0);
+
+//   let zahl = sum / newArr.length;
+
+//   return zahl;
+// }
+
+// alert( getAverageAge(user) );
+/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// const library = [
+//   { id: 1, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951, genres: ['Novel', 'Coming-of-age'], rating: 4.1 },
+//   { id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960, genres: ['Novel', 'Southern Gothic', 'Bildungsroman'], rating: 4.3 },
+//   { id: 3, title: '1984', author: 'George Orwell', year: 1949, genres: ['Dystopian', 'Political fiction', 'Social science fiction'], rating: 4.2 },
+//   { id: 4, title: 'Pride and Prejudice', author: 'Jane Austen', year: 1813, genres: ['Novel', 'Romance'], rating: 4.4 },
+//   { id: 5, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925, genres: ['Novel', 'Tragedy'], rating: 3.9 },
+//   { id: 6, title: 'Brave New World', author: 'Aldous Huxley', year: 1932, genres: ['Dystopian', 'Science fiction'], rating: 4.0 },
+//   // ... добавьте еще несколько книг для полноты картины
+// ];
+
+
+// function addBook(updateLibriry) {
+//   let bookTitle, bookAuthor, bookYear, bookGenre, bookRating;
+  
+//   const userInput = prompt('Введите значения, разделенные запятыми:', bookTitle, bookAuthor, bookYear, bookGenre, bookRating);
+
+//   const values = userInput.split(',').map(value => value.trim());
+
+
+//   return updateLibriry.push({ id: updateLibriry.length + 1, title: values[0], author: values[1], year: values[2],
+//                                genres: values[3], rating: values[4] });
+
+// }
+
+// console.log(addBook(library));
+// console.log(addBook(library));
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const library = [
+  { id: 1, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951, genres: ['Novel', 'Coming-of-age'], rating: 4.1 },
+  { id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960, genres: ['Novel', 'Southern Gothic', 'Bildungsroman'], rating: 4.3 },
+  { id: 3, title: '1984', author: 'George Orwell', year: 1949, genres: ['Dystopian', 'Political fiction', 'Social science fiction'], rating: 4.2 },
+  { id: 4, title: 'Pride and Prejudice', author: 'Jane Austen', year: 1813, genres: ['Novel', 'Romance'], rating: 4.4 },
+  { id: 5, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925, genres: ['Novel', 'Tragedy'], rating: 3.9 },
+  { id: 6, title: 'Brave New World', author: 'Aldous Huxley', year: 1932, genres: ['Dystopian', 'Science fiction'], rating: 4.0 },
+  // ... добавьте еще несколько книг для полноты картины
+];
+
+function addBook(updateLibrary) {
+  const userInput = prompt('Введите значения (заголовок, автор, год, жанры через запятую, рейтинг) через запятую:');
+  const values = userInput.split(',').map(value => value.trim());
+
+  if (values.length < 5) {
+    alert('Некорректный ввод. Пожалуйста, введите все значения.');
+    return;
+  }
+
+  // Корректное разделение строки с жанрами по запятой и удаление лишних пробелов
+  const genresString = values.slice(3, values.length - 1).join(',');  // Соединяем все жанры обратно
+  const genres = genresString.split(',').map(genre => genre.trim());
+
+  // Проверка на корректность разделения жанров
+  console.log('Жанры:', genres);
+
+  const newBook = {
+    id: updateLibrary.length + 1,
+    title: values[0],
+    author: values[1],
+    year: parseInt(values[2], 10),
+    genres: genres,
+    rating: parseFloat(values[values.length - 1])
+  };
+
+  return updateLibrary.push(newBook);
+}
+
+
+
+
+function deleteBook(updateLibrary) {
+  let deleteObj = +prompt('Выберите id для удаления:', updateLibrary.length);
+  
+  
+  updateLibrary.filter(item => {
+    if(item.id === deleteObj) return updateLibrary.splice(item.id - 1, 1);
+    
+  });
+
+  return updateLibrary;
+}
+
+
+
+function findBooksByGenre(updateLibrary) {
+  let findGenre = prompt('Введите искомый жанр:');
+
+  console.log(updateLibrary.filter(item => item.genres.includes(findGenre)));
+
+  return updateLibrary;
+}
+
+
+function getAverageRating(updateLibrary) {
+  let sumRating = updateLibrary.reduce((acc, bookRating) => acc + bookRating.rating, 0);
+  let middleRating = sumRating / updateLibrary.length;
+
+  return middleRating.toFixed(2);
+}
+
+
+
+function updateBook(updateLibrary) {
+  let enterId = +prompt('Введите id:', updateLibrary.length);
+
+  let element = updateLibrary.find(item => {
+          if(item.id === enterId) return updateLibrary.indexOf(item.id - 1);
+  });
+
+  let updateObj = prompt('Введите элементы для изменения:');
+  let newValues = updateObj.split(',').map(value => value.trim());
+
+  let newGenresString = newValues.slice(3, newValues.length - 1).join(',');  
+  let newGenres = newGenresString.split(',').map(genre => genre.trim());
+
+  Object.assign(element, {
+    id: element.id,
+    title: newValues[0],
+    author: newValues[1],
+    year: parseInt(newValues[2], 10),
+    genres: newGenres,
+    rating: parseFloat(newValues[newValues.length - 1])
+  });
+
+  return updateLibrary;
+}
+
+
+function sortBooksByYear(updateLibrary) {
+  // let rise;
+  // let down;
+  let sortBooks = prompt('Выберите по возрастанию или по убыванию:');
+  let sortValues = sortBooks.split(',').map(sortValue => sortValue.trim());
+
+
+  if(sortValues[0] === '+'){
+    updateLibrary.sort((a, b) => {return a.year - b.year});
+  } else if(sortValues[0] === '-') updateLibrary.sort((a, b) => {return b.year - a.year});
+  
+  
+
+  return updateLibrary;
+}
+
+
+
+
+ function libraryMenu(updateLibrary) {
+
+
+//   let selectFunc = prompt(`a. Добавить книгу
+// b. Удалить книгу
+// c. Найти книги по жанру
+// d. Получить средний рейтинг книг
+// e. Обновить данные о книге
+// f. Отсортировать книги по году издания
+// g. Выход`);
+
+  
+     switch (selectFunc) {
+       case 'a':
+         addBook(updateLibrary);
+         break;
+       case 'b':
+         deleteBook(updateLibrary);
+         break;
+       case 'c':
+         findBooksByGenre(updateLibrary);
+         break;
+       case 'd':
+         getAverageRating(updateLibrary);
+         break;
+       case 'e':
+         updateBook(updateLibrary);
+         break;
+       case 'f':
+         sortBooksByYear(updateLibrary);
+         break;
+     }
+  
+     if (selectFunc === 'g') return updateLibrary;
+
+   return updateLibrary;
+}
+
+
+ console.log(libraryMenu(library));
+
+
+
+function handleMultipleActions(actionsString, updateLibrary) {
+  const actions = actionsString.split(',').map(action => action.trim());
+  
+  actions.forEach(action => {
+      switch (action) {
+          case 'add':
+              addBook(updateLibrary);
+              break;
+          case 'delete':
+              deleteBook(updateLibrary);
+              break;
+          case 'find':
+              findBooksByGenre(updateLibrary);
+              break;
+          case 'average':
+              getAverageRating(updateLibrary);
+              break;
+          case 'update':
+              updateBook(updateLibrary);
+              break;
+          case 'sort':
+              sortBooksByYear(updateLibrary);
+              break;
+          case 'exit':
+              exitMenu(updateLibrary);
+              break;
+          default:
+              console.log(`Неизвестная команда: ${action}`);
+              break;
+      }
+  });
+}
+
+function libraryMenu(updateLibrary) {
+  let exit = false;
+  
+  while (!exit) {
+      const actionsString = prompt(`
+          Введите действия, которые хотите выполнить (разделите запятыми):
+          - add (добавить книгу)
+          - delete (удалить книгу)
+          - find (найти книги по жанру)
+          - average (получить средний рейтинг книг)
+          - update (обновить данные о книге)
+          - sort (отсортировать книги по году издания)
+          - exit (выход из меню)
+      `);
+
+      if(actionsString === null) return updateLibrary;
+
+      handleMultipleActions(actionsString, updateLibrary);
+  }
+
+  return updateLibrary;
+}
+
+// Запуск меню
+console.log(libraryMenu(library));
