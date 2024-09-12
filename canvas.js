@@ -2111,3 +2111,2413 @@ function libraryMenu(updateLibrary) {
 
 // Запуск меню
 console.log(libraryMenu(library));
+
+
+
+
+//                                                     6
+
+
+// let range = {
+//   from: 1,
+//   to: 5
+// };
+
+// // 1. вызов for..of сначала вызывает эту функцию
+// range[Symbol.iterator] = function() {
+
+//   // ...она возвращает объект итератора:
+//   // 2. Далее, for..of работает только с этим итератором,
+//   // запрашивая у него новые значения
+//   return {
+//     current: this.from,
+//     last: this.to,
+
+//     // 3. next() вызывается на каждой итерации цикла for..of
+//     next() {
+//       // 4. он должен вернуть значение в виде объекта {done:.., value :...}
+//       if (this.current <= this.last) {
+//         return { done: false, value: this.current++ };
+//       } else {
+//         return { done: true };
+//       }
+//     }
+//   };
+// };
+
+// // теперь работает!
+// for (let num of range) {
+//   alert(num); // 1, затем 2, 3, 4, 5
+// }
+
+
+
+
+
+// let range = {
+//   from: 1,
+//   to: 5,
+
+//   [Symbol.iterator]() {
+//     this.current = this.from;
+//     return this;
+//   },
+
+//   next() {
+//     if (this.current <= this.to) {
+//       return { done: false, value: this.current++ };
+//     } else {
+//       return { done: true };
+//     }
+//   }
+// };
+
+// for (let num of range) {
+//   alert(num); // 1, затем 2, 3, 4, 5
+// }
+
+
+
+
+
+// let str = "Hello";
+
+// // делает то же самое, что и
+// // for (let char of str) alert(char);
+
+// let iterator = str[Symbol.iterator]();
+
+// while (true) {
+//   let result = iterator.next();
+//   if (result.done) break;
+//   alert(result.value); // выводит символы один за другим
+// }
+
+
+
+
+
+
+
+//                                                          7
+
+
+
+
+// let john = { name: 'John' };
+
+//   // давайте сохраним количество посещений для каждого пользователя
+//   let visitsCountMap = new Map();
+
+//   // объект john - это ключ для значения в объекте Map
+//   visitsCountMap.set(john, 123);
+
+//   alert(visitsCountMap.get(john)); // 123
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// let values = ["Hare", "Krishna", "Hare", "Krishna",
+//   "Krishna", "Krishna", "Hare", "Hare", ":-O"
+// ];
+
+
+
+// function unique(arr) {
+//   let set = new Set(arr);
+
+  
+//   set.forEach((value, valueAgain, set) => {
+//           set = value;
+//   });
+
+//   return set;
+  
+// }
+
+// console.log(unique(values));
+
+
+
+// let values = ["Hare", "Krishna", "Hare", "Krishna",
+//      "Krishna", "Krishna", "Hare", "Hare", ":-O"
+//    ];
+  
+
+// function unique(arr) {
+//   return Array.from(new Set(arr));
+// }
+
+// console.log(unique(values));
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// function aclean(arr) {
+//   let map = new Map();
+
+//   for (let word of arr) {
+//     // разбиваем слово на буквы, сортируем и объединяем снова в строку
+//     let sorted = word.toLowerCase().split("").sort().join(""); // (*)
+//     map.set(sorted, word);
+//   }
+
+//   return Array.from(map.values());
+// }
+
+// let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+// alert( aclean(arr) );
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+// function wordFrequency(text) {
+//   // Преобразуем все символы к нижнему регистру и удаляем знаки препинания
+//   text = text.toLowerCase().replace(/[^\w\s]/g, '');
+  
+//   // Разделяем текст на слова
+//   let words = text.split(/\s+/);
+  
+//   // Создаем Map для хранения частоты слов
+//   let freqMap = new Map();
+  
+//   // Перебираем каждое слово и увеличиваем его частоту в Map
+//   words.forEach(word => {
+//     let count = freqMap.get(word) || 0;
+//     freqMap.set(word, count + 1);
+//   });
+  
+//   return freqMap;
+// }
+
+// let text = "Hello, hello! How are you? I hope you are doing well. Hello!";
+// console.log(wordFrequency(text));
+
+
+
+
+
+// function uniqueElements(arr1, arr2) {
+  
+//   let newBigArr = arr1.concat(arr2);
+
+//   let freqMap = new Map();
+
+//   newBigArr.forEach(zahl => {
+//         let count = freqMap.get(zahl) || 0;
+//         freqMap.set(zahl, count + 1);
+//       });
+
+//       let result = [];
+//   freqMap.forEach((count, zahl) => {
+//     if (count === 1) {
+//       result.push(zahl);
+//     }
+//   });
+
+
+//   return result;
+
+
+// }
+
+// let arr1 = [1, 2, 3, 4, 5];
+// let arr2 = [4, 5, 6, 7, 8];
+
+// console.log(uniqueElements(arr1, arr2));
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// function intersection(setA, setB) {
+//   let newBigArr = Array.from(setA).concat(Array.from(setB));
+
+//   let freqMap = new Map();
+
+//   let newFreqMap;
+//   newBigArr.forEach(zahl => {
+//              let count = freqMap.get(zahl) || 0;
+//              freqMap.set(zahl, count + 1);       
+//     });
+
+//     newFreqMap = new Set(freqMap);
+
+//     let againMap = new Map(Array.from(newFreqMap).filter(([key, value]) => value === 2));
+
+    
+
+//   return againMap;
+  
+// }
+
+// let setA = new Set([1, 2, 3, 4]);
+// let setB = new Set([3, 4, 5, 6]);
+// console.log(intersection(setA, setB)); // Set { 3, 4 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+// function groupByAge(persons) {
+//   let newArr = new Map(Array.from(persons).sort((a, b) => a.age - b.age).map(([key, value]) => {return {age: key.name}}));
+
+  
+
+
+
+//   return newArr;
+// }
+
+// let persons = [
+//   { name: 'Alice', age: 25 },
+//   { name: 'Bob', age: 25 },
+//   { name: 'Charlie', age: 30 },
+//   { name: 'Dave', age: 30 },
+//   { name: 'Eve', age: 35 }
+// ];
+// console.log(groupByAge(persons));
+
+
+
+
+// function groupByAge(persons) {
+//   let ageMap = new Map();
+
+//   persons.forEach(person => {
+//     if (!ageMap.has(person.age)) {
+//       ageMap.set(person.age, []);
+//     }
+//     ageMap.get(person.age).push(person.name);
+//   });
+
+//   return ageMap;
+// }
+
+// let persons = [
+//   { name: 'Alice', age: 25 },
+//   { name: 'Bob', age: 25 },
+//   { name: 'Charlie', age: 30 },
+//   { name: 'Dave', age: 30 },
+//   { name: 'Eve', age: 35 }
+// ];
+
+// console.log(groupByAge(persons));
+
+
+
+
+////////////////////////////////////////////////////////////////////////
+// let newMap = [];
+
+// function registerBook() {
+//   let access = 'available'
+
+//   let enterBook = prompt('Введите название книги:', access);
+//   let valuesBook = enterBook.split(',').map(value => value.trim());
+
+//   let addArr = [valuesBook[0], valuesBook[1]];
+
+//   newMap.push(addArr);
+
+//   let againMap = new Map(newMap);
+
+//   return  againMap;
+// }
+
+// console.log(registerBook());
+// console.log(registerBook());
+// console.log(newMap);
+
+
+
+// function borrowBook(newMap) {
+//   let map = new Map(newMap); 
+
+//   let key = prompt('Введите ключ:');
+//   let value = prompt('Введите значение:');
+
+//   if (map.has(key)) {
+//     if (map.get(key) === value ) {
+//       map.set(key, 'borrowed');
+//     }
+//   }
+
+//   return map;
+// }
+
+
+// console.log(borrowBook(newMap));
+
+
+// function borrowBook(newMap) {
+//   let map = new Map(newMap); 
+
+//   let keyName = prompt('Введите ключ:');
+
+//   if(map.has(keyName)){
+//     map.set(keyName, 'available');
+//   }
+
+//   return map;
+// }
+
+// console.log(borrowBook(newMap));
+
+// function manageBooks() {
+//   // Создаем начальный объект Map для хранения книг
+//   let map = new Map();
+
+//   while (true) {
+//     // Запрашиваем у пользователя действие
+//     let action = prompt('Выберите действие: \n1. Регистрация книги \n2. Выдача книги \n3. Возврат книги \n4. Завершить работу');
+
+//     // Проверяем, выбрал ли пользователь завершение работы
+//     if (action === '4') {
+//       console.log('Работа завершена.');
+//       break;
+//     }
+
+//     // Запрашиваем название книги
+//     let keyName = prompt('Введите название книги:');
+
+//     switch (action) {
+//       case '1': // Регистрация книги
+//         // Проверяем, если книга уже существует, сообщаем об этом
+//         if (map.has(keyName)) {
+//           console.log(`Книга "${keyName}" уже зарегистрирована.`);
+//         } else {
+//           // Регистрируем новую книгу как доступную
+//           map.set(keyName, 'available');
+//           console.log(`Книга "${keyName}" зарегистрирована.`);
+//         }
+//         break;
+//       case '2': // Выдача книги
+//         // Проверяем, существует ли книга и доступна ли она
+//         if (map.has(keyName)) {
+//           if (map.get(keyName) === 'available') {
+//             map.set(keyName, 'borrowed');
+//             console.log(`Книга "${keyName}" выдана.`);
+//           } else {
+//             console.log(`Книга "${keyName}" уже выдана.`);
+//           }
+//         } else {
+//           console.log(`Книга с названием "${keyName}" не найдена.`);
+//         }
+//         break;
+//       case '3': // Возврат книги
+//         // Проверяем, существует ли книга и была ли она выдана
+//         if (map.has(keyName)) {
+//           if (map.get(keyName) === 'borrowed') {
+//             map.set(keyName, 'available');
+//             console.log(`Книга "${keyName}" возвращена.`);
+//           } else {
+//             console.log(`Книга "${keyName}" не была выдана.`);
+//           }
+//         } else {
+//           console.log(`Книга с названием "${keyName}" не найдена.`);
+//         }
+//         break;
+//       default:
+//         console.log('Неверный выбор. Попробуйте снова.');
+//     }
+//   }
+
+//   // Выводим финальное состояние библиотеки
+//   console.log('Состояние библиотеки:');
+//   for (let [key, value] of map) {
+//     console.log(`"${key}": ${value}`);
+//   }
+// }
+
+// // Вызов функции для запуска
+// manageBooks();
+
+
+
+
+// let tasks = new Map();
+// let categories = new Set();
+// let nextId = 1;
+
+// function addTask() {
+//   let title = prompt('Введите название задачи:');
+//   let category = prompt('Введите категорию задачи:');
+//   let completed = prompt('Завершена ли задача? (да/нет)') === 'да';
+  
+//   let id = nextId++;
+//   tasks.set(id, { title, category, completed });
+//   categories.add(category);
+//   console.log(`Задача "${title}" добавлена.`);
+// }
+
+// function markTaskAsCompleted() {
+//   let id = parseInt(prompt('Введите идентификатор задачи, которую нужно пометить как выполненную:'), 10);
+//   if (tasks.has(id)) {
+//     let task = tasks.get(id);
+//     task.completed = true;
+//     console.log(`Задача "${task.title}" помечена как выполненная.`);
+//   } else {
+//     console.log('Задача с таким идентификатором не найдена.');
+//   }
+// }
+
+// function deleteTask() {
+//   let id = parseInt(prompt('Введите идентификатор задачи для удаления:'), 10);
+//   if (tasks.has(id)) {
+//     let task = tasks.get(id);
+//     categories.delete(task.category);
+//     tasks.delete(id);
+//     console.log('Задача удалена.');
+//   } else {
+//     console.log('Задача с таким идентификатором не найдена.');
+//   }
+// }
+
+// function viewTasks() {
+//   console.log('Список задач:');
+//   tasks.forEach((task, id) => {
+//     console.log(`ID: ${id}, Название: ${task.title}, Категория: ${task.category}, Выполнена: ${task.completed ? 'Да' : 'Нет'}`);
+//   });
+// }
+
+// function viewCategories() {
+//   console.log('Категории задач:');
+//   categories.forEach(category => {
+//     console.log(category);
+//   });
+// }
+
+// // Пример использования
+// addTask();
+// markTaskAsCompleted();
+// deleteTask();
+// viewTasks();
+// viewCategories();
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// let user1 = { name: "Alice" };
+// let user2 = { name: "Bob" };
+// let subscription1 = { service: "Music" };
+// let subscription2 = { service: "Video" };
+
+
+// let newAddSubscription = new WeakMap();
+
+// function addSubscription(user, subscription) {
+//   if(!newAddSubscription.has(user, subscription) || !newAddSubscription.has(subscription)) {
+//     let newArrObj = [];
+//     newArrObj.push(subscription)
+//     newAddSubscription.set(user, newArrObj);
+//   }
+
+//   return newAddSubscription;
+// }
+
+// console.log(addSubscription(user1, subscription1));
+// console.log(addSubscription(user1, subscription2));
+// console.log(addSubscription(user2, subscription1));
+
+
+
+// let user1 = { name: "Alice" };
+// let user2 = { name: "Bob" };
+// let subscription1 = { service: "Music" };
+// let subscription2 = { service: "Video" };
+
+// let subscriptions = new WeakMap();
+
+// function addSubscription(user, subscription) {
+//   if (!subscriptions.has(user)) {
+//     subscriptions.set(user, []);
+//   }
+//   subscriptions.get(user).push(subscription);
+//   return subscriptions;
+// }
+
+// console.log(addSubscription(user1, subscription1));
+// console.log(addSubscription(user1, subscription2));
+// console.log(addSubscription(user2, subscription1));
+
+
+
+// function removeSubscription(user, subscription) {
+//   if(subscriptions.has(user)) {
+//       subscriptions.delete(user, subscription);
+    
+//   }
+
+//   return subscriptions;
+// }
+
+// console.log(removeSubscription(user1, subscription1));
+
+
+
+// function removeSubscription(user, subscription) {
+//   if (subscriptions.has(user)) {
+//     let userSubscriptions = subscriptions.get(user);
+//     let index = userSubscriptions.indexOf(subscription);
+//     if (index !== -1) {
+//       userSubscriptions.splice(index, 1);
+//     }
+//     if (userSubscriptions.length === 0) {
+//       subscriptions.delete(user);
+//     }
+//   }
+//   return subscriptions;
+// }
+
+// console.log(removeSubscription(user1, subscription1));
+
+// function hasSubscription(user, subscription) {
+//   if (subscriptions.get(user).includes(subscription)) {
+//     console.log('подписка существует');
+//   } else {
+//     console.log('подписка не найдена');
+//   }
+// }
+
+// console.log(hasSubscription(user2, subscription1));
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+// let reader1 = { name: "Alice" };
+// let reader2 = { name: "Bob" };
+// let book1 = { title: "1984" };
+// let book2 = { title: "Brave New World" };
+// let book3 = { title: "Fahrenheit 451" };
+
+// let addBookAndReader = new WeakMap();
+// let addReader = new WeakSet();
+// let addArrBooks = [{ title: "1984" }, 
+//                    { title: "Brave New World" }, 
+//                    { title: "Fahrenheit 451" }];
+
+
+// function addBook(reader, book) {
+//   if(!addBookAndReader.has(reader)) {
+//     let add = [];
+//     addBookAndReader.set(reader, add);
+//   }
+
+//   addBookAndReader.get(reader).push(book);
+
+//   return addBookAndReader;
+// }
+
+// console.log(addBook(reader1, book1));
+// console.log(addBook(reader1, book2));
+// console.log(addBook(reader2, book3));
+
+
+// function removeBook(reader, book) {
+//   if(addBookAndReader.has(reader)){
+//     let i = addBookAndReader.get(reader);
+//     let newI = i.indexOf(book);
+//     i.splice(newI, 1)
+//   }
+    
+//   return addBookAndReader;
+// }
+
+// console.log(removeBook(reader1, book2));
+
+
+// function hasBook(reader, book) {
+//   if(addBookAndReader.has(reader)){
+//     let i = addBookAndReader.get(reader);
+//       if(i.includes(book)) {
+//         console.log('Книга существует');
+//         return true;
+//       } else {
+//         console.log('Книга не существует');
+//         return false;
+//       }
+    
+//   }
+// }
+
+// console.log(hasBook(reader1, book2));
+
+
+// function addActiveReader(reader){
+//   return addReader.add(reader);
+// }
+
+// console.log(addActiveReader(reader1));
+// console.log(addActiveReader(reader2));
+
+// function removeActiveReader(reader){
+//   return addReader.delete(reader);
+// }
+
+// console.log(removeActiveReader(reader1));
+
+
+// function isActiveReader(reader){
+//   return addReader.has(reader) ? 
+//           console.log(`${reader} является активным пользователем`) : 
+//           console.log(`пользователь не найден или не является активным`);
+// }
+
+// console.log(isActiveReader(reader1));
+
+
+// function addBookGroup(reader, books) {
+//   if(!addBookAndReader.has(reader)){
+//     addBookAndReader.set(reader, []);
+//   }
+  
+//   addBookAndReader.get(reader).push(books)
+
+//   return addBookAndReader;
+// }
+
+// console.log(addBookGroup(reader2, addArrBooks));
+
+
+// // function removeBookGroup(reader, books) {
+// //   let b = addBookAndReader.get(reader);
+
+// //   b.splice(Array.isArray(books), 1);
+
+// //   return addBookAndReader;
+// // }
+
+// function removeBookGroup(reader, books) {
+//   books.forEach(book => removeBook(reader, book));
+
+//   return addBookAndReader;
+// }
+
+// console.log(removeBookGroup(reader2, addArrBooks));
+
+
+
+
+//                                                           9
+
+/////////////////////////////////////////////////////
+// let salaries = {
+//   "John": 100,
+//   "Pete": 300,
+//   "Mary": 250
+// };
+
+
+
+// function sumSalaries(salaries) {
+//   let sum = 0;
+
+//   for (let value of Object.values(salaries)) {
+//     sum += value;
+//   }
+
+//   return sum;
+
+// }
+
+//console.log(sumSalaries(salaries));
+///////////////////////////////////////////////////
+
+
+
+
+// let user = {
+//   name: 'John',
+//   age: 30
+// };
+
+
+// function count(obj) {
+//   // let newObj = Object.entries(obj);
+
+//   // return newObj.length
+
+//   return Object.entries(obj).length;
+// }
+
+// console.log(count(user));
+
+
+
+
+
+//                                                      10
+
+////////////////////////////////////////////////////////
+// let user = {
+//   name: "John",
+//   years: 30
+// };
+
+// let {name, years: age, isAdmin = false} = user;
+
+// alert( name ); // John
+// alert( age ); // 30
+// alert( isAdmin ); // false
+///////////////////////////////////////////////////////
+
+
+
+
+// let salaries = {
+//   "John": 100,
+//   "Pete": 300,
+//   "Mary": 250
+// };
+
+
+// function topSalary(salaries){
+//   let newKey;
+//   let result = 0;
+//   for(let [key, value] of Object.entries(salaries)) {
+    
+//     if(result < value) {
+//       result = value;
+//       newKey = key;
+//     }
+//   }
+
+//   return newKey;
+// }
+
+// console.log(topSalary(salaries));
+
+
+
+// function topSalary(salaries) {
+//   let topPaid = null;
+//   let maxSalary = 0;
+
+//   for (let [name, salary] of Object.entries(salaries)) {
+//     if (maxSalary < salary) {
+//       maxSalary = salary;
+//       topPaid = name;
+//     }
+//   }
+
+//   return topPaid;
+// }
+
+// console.log(topSalary(salaries));
+
+
+// function getNestedValue(obj, path) {
+//   return path.reduce((acc, key) => {
+//     if (acc && typeof acc === 'object' && key in acc) {
+//       return acc[key];
+//     } else {
+//       return undefined;
+//     }
+//   }, obj);
+// }
+
+// const obj = {
+//   a: {
+//     b: {
+//       c: 42
+//     }
+//   }
+// };
+
+// console.log(getNestedValue(obj, ['a', 'b', 'c'])); // 42
+
+
+
+
+// function mergeObjects(obj1, obj2) {
+//   return { ...obj1, ...obj2 };
+// }
+
+// // Пример использования:
+// const obj1 = { a: 1, b: 2 };
+// const obj2 = { b: 3, c: 4 };
+
+// console.log(mergeObjects(obj1, obj2)); // { a: 1, b: 3, c: 4 }
+
+
+
+// const user = { firstName: 'John', age: 30 };
+
+
+// function processUserData({firstName: name, age = 'Unknown age'}) {
+  
+//   return {name: name !== 'Unknown' ? name : 'Unknown', age: `${age} years old`};
+
+// }
+
+
+// console.log(processUserData(user));
+
+
+
+
+// function processUserData(user) {
+//   const {
+//     firstName: name = 'Unknown',
+//     age = 'Unknown age',
+//     ...rest
+//   } = user;
+
+//   return {
+//     name: name !== 'Unknown' ? name : 'Unknown',
+//     age: typeof age === 'number' ? `${age} years old` : age,
+//     ...rest
+//   };
+// }
+
+// // Пример использования:
+// const user = { firstName: 'John', age: 30 };
+// console.log(processUserData(user)); // { name: 'John', age: '30 years old' }
+
+// const userWithoutAge = { firstName: 'Jane' };
+// console.log(processUserData(userWithoutAge)); // { name: 'Jane', age: 'Unknown age' }
+
+// const userWithoutFirstName = { age: 25 };
+// console.log(processUserData(userWithoutFirstName)); // { name: 'Unknown', age: '25 years old' }
+
+
+
+//                                         11
+
+// let date = new Date();
+// date.setSeconds(date.getSeconds() + 70);
+
+// alert( date );
+
+
+// let start = Date.now(); // количество миллисекунд с 1 января 1970 года
+
+// // выполняем некоторые действия
+// for (let i = 0; i < 100000; i++) {
+//   let doSomething = i * i * i;
+// }
+
+// let end = Date.now(); // заканчиваем отсчёт времени
+
+// alert( `Цикл отработал за ${end - start} миллисекунд` );
+
+
+
+// function diffSubtract(date1, date2) {
+//   return date2 - date1;
+// }
+
+// function diffGetTime(date1, date2) {
+//   return date2.getTime() - date1.getTime();
+// }
+
+// function bench(f) {
+//   let date1 = new Date();
+//   let date2 = new Date();
+
+//   let start = Date.now();
+//   for (let i = 0; i < 100000; i++) f(date1, date2);
+//   return Date.now() - start;
+// }
+
+// alert( 'Время diffSubtract: ' + bench(diffSubtract) + 'мс' );
+// alert( 'Время diffGetTime: ' + bench(diffGetTime) + 'мс' );
+
+
+
+
+
+////////////////////////////////////////////////
+// let date = new Date(2012, 1, 20, 3, 12);
+
+// alert(date);
+////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+// let date = new Date(2012, 0, 3);  
+
+// function getWeekDay(date) {
+//   let day = date.getDay();
+
+//   switch (day) {
+//     case 0:
+//       return 'ВС';
+//     case 1:
+//       return 'ПН';
+//     case 2:
+//       return 'ВТ';
+//     case 3:
+//       return 'СР';
+//     case 4:
+//       return 'ЧТ';
+//     case 5:
+//       return 'ПТ';
+//     case 6:
+//       return 'СБ';
+//   }
+// }
+
+
+// alert( getWeekDay(date) ); 
+//////////////////////////////////////////////
+
+
+
+/////////////////////////////////////////////////////////////////////////
+// function getWeekDay(date) {
+//   let days = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
+
+//   return days[date.getDay() - 1];
+// }
+
+// function getLocalDay(date) {
+
+//   let day = date.getDay();
+
+//   if (day == 0) { // день недели 0 (воскресенье) в европейской нумерации будет 7
+//     day = 7;
+//   }
+
+//   return day;
+// }
+
+// let date = new Date(2012, 0, 3);
+// alert( getLocalDay(date) ); // ПТ
+////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+/////////////////////////////////////////////////////////////
+// let date = new Date(2015, 0, 2);
+
+// function getDateAgo(date, days) {
+//   date.setDate(date.getDate() - days);
+//   return date.getDate();
+// }
+
+// alert( getDateAgo(date, 1) ); // 1, (1 Jan 2015)
+// alert( getDateAgo(date, 2) ); // 31, (31 Dec 2014)
+// alert( getDateAgo(date, 365) ); // 2, (2 Jan 2014)
+////////////////////////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////////////////////
+// function getLastDayOfMonth(year, month) {
+//   let date = new Date();
+
+//   date.setFullYear(year, month + 1, 0);
+
+//   return date.getDate();
+// }
+
+// alert(getLastDayOfMonth(2012, 1));
+////////////////////////////////////////////////////////////
+
+
+
+// let date = new Date();
+
+// function getSecondsToday() {
+//   return date.getHours() * date.getSeconds() * date.getMinutes() * date.getMilliseconds()  * 3600;
+// }
+
+// alert(getSecondsToday());
+
+
+// function getSecondsToday() {
+//   let now = new Date(); // Создаем новый объект Date для текущего времени
+//   let startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()); // Создаем объект Date для начала текущего дня
+//   let secondsToday = Math.floor((now - startOfDay) / 1000); // Разница в миллисекундах, деленная на 1000, чтобы получить секунды
+//   return secondsToday;
+// }
+
+// alert(getSecondsToday());
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+// function getSecondsToday() {
+//   let now = new Date();
+
+//   // создаём объект с текущими днём/месяцем/годом
+//   let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+//   let diff = now - today; // разница в миллисекундах
+//   return Math.round(diff / 1000); // получаем секунды
+// }
+
+// alert(getSecondsToday());
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// function getSecondsToTomorrow() {
+//   let now = new Date();
+//   let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  
+//   // Создаем объект Date для начала завтрашнего дня
+//   let tomorrow = new Date(today);
+//   tomorrow.setDate(today.getDate() + 1);
+
+//   let diff = tomorrow - now; // разница в миллисекундах
+//   return Math.floor(diff / 1000); // преобразуем в секунды и округляем вниз
+// }
+
+// alert(getSecondsToTomorrow());
+//////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+// function formatDate(date) {
+//   let diff = new Date() - date; // разница в миллисекундах
+
+//   if (diff < 1000) { // меньше 1 секунды
+//     return 'прямо сейчас';
+//   }
+
+//   let sec = Math.floor(diff / 1000); // преобразовать разницу в секунды
+
+//   if (sec < 60) {
+//     return sec + ' сек. назад';
+//   }
+
+//   let min = Math.floor(diff / 60000); // преобразовать разницу в минуты
+//   if (min < 60) {
+//     return min + ' мин. назад';
+//   }
+
+//   // отформатировать дату
+//   // добавить ведущие нули к единственной цифре дню/месяцу/часам/минутам
+//   let d = date;
+//   d = [
+//     '0' + d.getDate(),
+//     '0' + (d.getMonth() + 1),
+//     '' + d.getFullYear(),
+//     '0' + d.getHours(),
+//     '0' + d.getMinutes()
+//   ].map(component => component.slice(-2)); // взять последние 2 цифры из каждой компоненты
+
+//   // соединить компоненты в дату
+//   return d.slice(0, 3).join('.') + ' ' + d.slice(3).join(':');
+// }
+
+// alert( formatDate(new Date(new Date - 1)) ); // "прямо сейчас"
+
+// alert( formatDate(new Date(new Date - 30 * 1000)) ); // "30 сек. назад"
+
+// alert( formatDate(new Date(new Date - 5 * 60 * 1000)) ); // "5 мин. назад"
+
+// // вчерашняя дата вроде 31.12.2016, 20:00
+// alert( formatDate(new Date(new Date - 86400 * 1000)) );
+
+
+
+
+// function AdvancedCalculator() {
+//   this.operations = {};
+
+//   this.calculate = function(expression) {
+//     let newExpression = expression.split(' ');
+
+//     let num1 = +newExpression[0];
+//     let op = newExpression[1];
+//     let num2 = +newExpression[2];
+
+//     switch (op) {
+//       case '+':
+//         return num1 + num2
+//       case '-':
+//         return num1 - num2;
+//       case '*':
+//         return num1 * num2;
+//       case '/':
+//         return num1 / num2;
+//       case '**':
+//         return num1 ** num2;
+//       default:
+//         console.log(`Неизвестный символ: ${op}`);
+//     }
+
+//     return  this.operations[op](num1, num2);
+//   }
+
+//   this.addOperation = function(operator, func) {
+//     this.operations[operator] = func;
+//   };
+// }
+
+// let advancedCalc = new AdvancedCalculator();
+
+
+
+
+// // console.log(advancedCalc.calculate("10 + 5"));  // 15
+// // console.log(advancedCalc.calculate("15 - 3"));  // 12
+// // console.log(advancedCalc.calculate("4 * 2"));   // 8
+// // console.log(advancedCalc.calculate("20 / 4"));  // 5
+// // console.log(advancedCalc.calculate("2 ** 3"));  // 8
+
+
+// advancedCalc.addOperation("%", (a, b) => a % b);
+// advancedCalc.addOperation("&&", (a, b) => a && b);
+
+// console.log(advancedCalc.calculate("10 % 3"));  // 1
+// console.log(advancedCalc.calculate("1 && 0")); 
+
+
+
+// function AdvancedCalculator() {
+//   this.operations = {
+//     '+': (a, b) => a + b,
+//     '-': (a, b) => a - b,
+//     '*': (a, b) => a * b,
+//     '/': (a, b) => b !== 0 ? a / b : "Cannot divide by zero",
+//     '**': (a, b) => a ** b
+//   };
+
+//   this.calculate = function(expression) {
+//     let newExpression = expression.split(' ');
+
+//     if (newExpression.length !== 3) {
+//       throw new Error("Invalid expression format. It should be 'NUMBER operator NUMBER'");
+//     }
+
+//     let num1 = parseFloat(newExpression[0]);
+//     let op = newExpression[1];
+//     let num2 = parseFloat(newExpression[2]);
+
+//     if (isNaN(num1) || isNaN(num2)) {
+//       throw new Error("Invalid number in the expression.");
+//     }
+
+//     if (!(op in this.operations)) {
+//       throw new Error("Unsupported operator: " + op);
+//     }
+
+//     return this.operations[op](num1, num2);
+//   };
+
+//   this.addOperation = function(operator, func) {
+//     this.operations[operator] = func;
+//   };
+// }
+
+// let advancedCalc = new AdvancedCalculator();
+
+// // Adding new operations
+// advancedCalc.addOperation("%", (a, b) => a % b);
+// advancedCalc.addOperation("&&", (a, b) => a && b);
+
+// // Testing the new operations
+// console.log(advancedCalc.calculate("10 % 3"));  // 1
+// console.log(advancedCalc.calculate("1 && 0"));  // 0
+
+
+
+
+
+//                                            12
+
+
+
+
+
+// let room = {
+//   number: 23
+// };
+
+// let meetup = {
+//   title: "Conference",
+//   participants: [{name: "John"}, {name: "Alice"}],
+//   place: room // meetup ссылается на room
+// };
+
+// room.occupiedBy = meetup; // room ссылается на meetup
+
+// alert( JSON.stringify(meetup, ['545455', '87756586']) );
+// // {"title":"Conference","participants":[{},{}]}
+
+
+
+
+// let room = {
+//   number: 23,
+// };
+
+// let meetup = {
+//   title: 'Conference',
+//   participants: [{ name: 'John' }, { name: 'Alice' }],
+//   place: room, // meetup ссылается на room
+// };
+
+// room.occupiedBy = meetup; // room ссылается на meetup
+
+// alert(
+//   JSON.stringify(meetup, function replacer(key, value) {
+//     console.log(`${key}: ${value}`);
+//     return key == 'occupiedBy' ? undefined : value;
+//   })
+// );
+
+
+
+
+
+
+//////////////////////////////////////////////////////
+// let user = {
+//   name: "Василий Иванович",
+//   age: 35
+// };
+
+
+// user = JSON.stringify(user);
+
+// user = JSON.parse(user);
+
+// console.log(user);
+/////////////////////////////////////////////////////
+
+
+
+
+// let room = {
+//   number: 23
+// };
+
+// let meetup = {
+//   title: "Совещание",
+//   occupiedBy: [{name: "Иванов"}, {name: "Петров"}],
+//   place: room
+// };
+
+// // цикличные ссылки
+// room.occupiedBy = meetup;
+// meetup.self = meetup;
+
+// alert( JSON.stringify(meetup, function replacer(key, value) {
+//   return (key != "" && value == meetup) ? undefined : value;
+// }));
+
+
+
+
+// let project = {
+//   name: "AI Research",
+//   team: [{name: "John"}, {name: "Jane"}],
+//   details: {
+//     location: "San Francisco",
+//     leader: null,
+
+//     // toJSON() {
+//     //   return {location: this.location, leader: this.leader};
+//     // }
+//   }
+// };
+
+// // Устанавливаем ссылки, создающие циклическую зависимость
+// project.details.leader = project;
+// project.team.push(project);
+
+// alert(JSON.stringify(project, function replacer(key, value) {
+//     return (key != "" && value == project) ? undefined : value;
+// }));
+
+
+
+
+// let project = {
+//   name: "AI Research",
+//   team: [{name: "John"}, {name: "Jane"}],
+//   details: {
+//     location: "San Francisco",
+//     leader: null
+//   }
+// };
+
+// // Устанавливаем ссылки, создающие циклическую зависимость
+// project.details.leader = project;
+// project.team.push(project);
+
+// function replacer(key, value) {
+//   // Используем набор для отслеживания уже увиденных объектов
+//   const seen = new Set();
+  
+//   return function(key, value) {
+//     // Если значение является объектом и не является null
+//     if (value && typeof value === 'object') {
+//       // Если объект уже был увиден, возвращаем undefined
+//       if (seen.has(value)) {
+//         return undefined;
+//       }
+//       // Добавляем объект в набор
+//       seen.add(value);
+//     }
+//     // Если значение ссылается на project, возвращаем undefined
+//     if (value === project) {
+//       return undefined;
+//     }
+//     return value;
+//   }
+// }
+
+// alert(JSON.stringify(project, replacer()));
+
+
+
+
+
+// function pow(x, n) {
+//   let result = 1;
+
+//   // умножаем result на x n раз в цикле
+//   for (let i = 0; i < n; i++) {
+//     result *= x;
+//   }
+
+//   return result;
+// }
+
+// alert( pow(2, 3) ); // 8
+
+
+
+
+// function pow(x, n) {
+//   if (n == 1) {
+//     return x;
+//   } else {
+//     return x * pow(x, n - 1);
+//   }
+// }
+
+// alert( pow(2, 3) ); // 8
+
+
+
+
+// Функция для загрузки JSON данных из файла
+// async function loadJSON(filePath) {
+//   const response = await fetch(filePath);
+//   const data = await response.json();
+//   return data;
+// }
+
+// // Функция для сохранения JSON данных в файл
+// function saveJSON(data, filePath) {
+//   const jsonString = JSON.stringify(data, null, 2);
+//   const blob = new Blob([jsonString], { type: 'application/json' });
+//   const url = URL.createObjectURL(blob);
+//   const a = document.createElement('a');
+//   a.href = url;
+//   a.download = filePath;
+//   a.click();
+//   URL.revokeObjectURL(url);
+// }
+
+// // Функция для обработки данных
+// function processData(data) {
+//   const monthlySales = {};
+
+//   data.forEach(sale => {
+//       const date = new Date(sale.date);
+//       const month = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+
+//       if (!monthlySales[month]) {
+//           monthlySales[month] = {
+//               total_sales: 0,
+//               total_amount: 0,
+//               count: 0
+//           };
+//       }
+
+//       monthlySales[month].total_sales += sale.total_amount;
+//       monthlySales[month].total_amount += sale.total_amount;
+//       monthlySales[month].count += 1;
+//   });
+
+//   const result = Object.entries(monthlySales).map(([month, stats]) => ({
+//       month,
+//       total_sales: stats.total_sales,
+//       average_sale: stats.total_amount / stats.count
+//   }));
+
+//   return result;
+// }
+
+// // Основная функция
+// async function main() {
+//   const inputFilePath = 'sales_data.json'; // Путь к входному JSON файлу
+//   const outputFilePath = 'monthly_sales_data.json'; // Путь к выходному JSON файлу
+
+//   const data = await loadJSON(inputFilePath);
+//   const processedData = processData(data);
+//   saveJSON(processedData, outputFilePath);
+// }
+
+// // Запуск основной функции
+// main();
+
+
+
+
+
+// function filterAndSortStudents(students, minAge) {
+//   return students
+//       .filter(student => student.age > minAge)
+//       .sort((a, b) => {
+//           const avgA = a.grades.reduce((sum, grade) => sum + grade, 0) / a.grades.length;
+//           const avgB = b.grades.reduce((sum, grade) => sum + grade, 0) / b.grades.length;
+//           return avgB - avgA;
+//       });
+// }
+
+// const students = [
+//   { "name": "Alice", "age": 20, "grades": [85, 90, 78] },
+//   { "name": "Bob", "age": 18, "grades": [92, 88, 95] },
+//   { "name": "Charlie", "age": 22, "grades": [70, 75, 80] }
+// ];
+
+// console.log(filterAndSortStudents(students, 18));
+
+
+// let newA = [];
+
+// function aggregateSalesByMonth(sales){
+//   let a = [];
+//   let b = [];
+//   let newDateforSales;
+//   for (let i = 0; i < sales.length; i++) {
+//     a.push(sales[i].date.slice(0, 7));
+//     b.push(sales[i].amount);
+
+//    if(!(newA.includes(a[i]))){ 
+//       newDateforSales = a[i]; 
+//       let sumOfAmount = b.reduce((sum, amo) => sum + amo, 0);
+//       return newA.push({newDateforSales: sumOfAmount});
+//       };
+//   }
+
+// return newA;
+// }
+
+
+// let sales = [
+//   { "date": "2023-01-01", "product_id": 1, "amount": 100 },
+//   { "date": "2023-01-15", "product_id": 2, "amount": 200 },
+//   { "date": "2023-02-01", "product_id": 1, "amount": 150 }
+// ];
+
+// console.log(aggregateSalesByMonth(sales));
+
+
+
+
+// function aggregateSalesByMonth(sales) {
+//   if (!Array.isArray(sales)) {
+//       throw new Error("Sales must be an array");
+//   }
+
+//   const result = {};
+
+//   sales.forEach(sale => {
+//       if (sale && sale.date && sale.amount) {
+//           const month = sale.date.slice(0, 7); // "YYYY-MM"
+//           if (!result[month]) {
+//               result[month] = 0;
+//           }
+//           result[month] += sale.amount;
+//       }
+//   });
+
+//   return result;
+// }
+
+// const sales = [
+//   { "date": "2023-01-01", "product_id": 1, "amount": 100 },
+//   { "date": "2023-01-15", "product_id": 2, "amount": 200 },
+//   { "date": "2023-02-01", "product_id": 1, "amount": 150 }
+// ];
+
+// console.log(aggregateSalesByMonth(sales));
+
+
+
+// let newData = [];
+
+// const data = {
+//   "users": [
+//       { "id": 1, "name": "Alice" },
+//       { "id": 2, "name": "Bob" }
+//   ],
+//   "orders": [
+//       { "order_id": 101, "user_id": 1, "amount": 100 },
+//       { "order_id": 102, "user_id": 2, "amount": 200 }
+//   ]
+// };
+
+
+// function combineUserData(users, orders) {
+//   const userMap = users.reduce((map, user) => {
+//       map[user.id] = user.name;
+//       return map;
+//   }, {});
+
+//   return orders.map(order => ({
+//       order_id: order.order_id,
+//       user_id: order.user_id,
+//       user_name: userMap[order.user_id],
+//       amount: order.amount
+//   }));
+// }
+
+// console.log(combineUserData(data.users, data.orders));
+
+
+
+
+
+// function aggregateSalesByMonth(sales) {
+//   const result = {};
+
+//   for (let i = 0; i < sales.length; i++) {
+//       const month = sales[i].date.slice(0, 7); // "YYYY-MM"
+//       if (!result[month]) {
+//           result[month] = 0;
+//       }
+//       result[month] += sales[i].amount;
+//   }
+
+//   return result;
+// }
+
+// const sales = [
+//   { "date": "2023-01-01", "product_id": 1, "amount": 100 },
+//   { "date": "2023-01-15", "product_id": 2, "amount": 200 },
+//   { "date": "2023-02-01", "product_id": 1, "amount": 150 }
+// ];
+
+// console.log(aggregateSalesByMonth(sales));
+
+
+
+
+// function combineUserData(users, orders) {
+//   const userMap = users.reduce((map, user) => {
+//       if (user && user.id && user.name) {
+//           map[user.id] = user.name;
+//       }
+//       return map;
+//   }, {});
+
+//   return orders.map(order => {
+//       if (order && order.order_id && order.user_id && order.amount) {
+//           return {
+//               order_id: order.order_id,
+//               user_id: order.user_id,
+//               user_name: userMap[order.user_id],
+//               amount: order.amount
+//           };
+//       }
+//       return null;
+//   }).filter(order => order !== null);
+// }
+
+// const data = {
+//   "users": [
+//       { "id": 1, "name": "Alice" },
+//       { "id": 2, "name": "Bob" }
+//   ],
+//   "orders": [
+//       { "order_id": 101, "user_id": 1, "amount": 100 },
+//       { "order_id": 102, "user_id": 2, "amount": 200 }
+//   ]
+// };
+
+// console.log(combineUserData(data.users, data.orders));
+
+
+
+
+
+
+
+//                                         1(продвинутая работа с функциями)
+
+
+
+// 1                                                1рекурсия и стек
+
+
+
+
+// function pow(x, n) {
+//     if (n == 1) {
+//       return x;
+//     } else {
+//       return x * pow(x, n - 1);
+//     }
+//   }
+  
+//   alert( pow(2, 3) ); // 8
+
+
+
+// let company = {
+//     sales: [{
+//       name: 'John',
+//       salary: 1000
+//     }, {
+//       name: 'Alice',
+//       salary: 600
+//     }],
+  
+//     development: {
+//       sites: [{
+//         name: 'Peter',
+//         salary: 2000
+//       }, {
+//         name: 'Alex',
+//         salary: 1800
+//       }],
+  
+//       internals: [{
+//         name: 'Jack',
+//         salary: 1300
+//       }]
+//     }
+//   };
+
+
+
+//   let company = { // тот же самый объект, сжатый для краткости
+//     sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 600 }],
+//     development: {
+//       sites: [{name: 'Peter', salary: 2000}, {name: 'Alex', salary: 1800 }],
+//       internals: [{name: 'Jack', salary: 1300}]
+//     }
+//   };
+  
+//   // Функция для подсчёта суммы зарплат
+//   function sumSalaries(department) {
+//     if (Array.isArray(department)) { // случай (1)
+//       return department.reduce((prev, current) => prev + current.salary, 0); // сумма элементов массива
+//     } else { // случай (2)
+//       let sum = 0;
+//       for (let subdep of Object.values(department)) {
+//         sum += sumSalaries(subdep); // рекурсивно вызывается для подотделов, суммируя результаты
+//       }
+//       return sum;
+//     }
+//   }
+  
+//   alert(sumSalaries(company)); // 6700
+
+
+
+
+
+
+// let list = { value: 1 };
+// list.next = { value: 2 };
+// list.next.next = { value: 3 };
+// list.next.next.next = { value: 4 };
+// list.next.next.next.next = null;
+
+// // добавление нового элемента в список
+// list = { value: "new item", next: list };
+
+// list = list.next.next.next;
+
+
+
+// // Создание узлов
+// let node1 = { value: 1, next: null, prev: null };
+// let node2 = { value: 2, next: null, prev: null };
+// let node3 = { value: 3, next: null, prev: null };
+// let node4 = { value: 4, next: null, prev: null };
+
+// // Связывание узлов
+// node1.next = node2;
+// node2.prev = node1;
+// node2.next = node3;
+// node3.prev = node2;
+// node3.next = node4;
+// node4.prev = node3;
+
+// // Указатели на начало и конец списка
+// let head = node1;
+// let tail = node4;
+
+// // Добавление нового элемента в начало
+// let newNode = { value: "new item", next: head, prev: null };
+// //head.prev = newNode;
+// head = newNode;
+
+// // Теперь head указывает на "new item", а tail на 4
+
+// // Пример перемещения назад от конца списка
+// let current = tail;
+// while (current) {
+//   console.log(current.value);
+//   current = current.prev;
+// }
+// // Выведет 4, 3, 2, 1, "new item"
+
+
+
+
+
+
+
+// function sumTo(n) {
+//     let result = 0;
+
+//     for (let i = 0; i <= n; i++){
+//         result += i;
+//     }
+
+//     return result;
+// }
+
+// alert( sumTo(100) ); 
+
+
+
+
+
+// function sumTo(n) {
+//     if(n > 1){
+//         return n + sumTo(n-1);
+//     } else {
+//         return n;
+//     }
+
+// }
+
+// alert( sumTo(100) ); 
+
+
+
+
+// function sumTo(n) {
+//     let result = 0;
+//     let arrForProgression = [];
+//     for(let i = 0; i <= n; i++){
+//         arrForProgression.push(i);
+//     }
+//     arrForProgression.shift();
+
+//     result = arrForProgression.length / 2 * (arrForProgression[0] + arrForProgression[arrForProgression.length -  1]);
+
+//     return result;
+// }
+
+// console.log( sumTo(49) ); 
+
+
+
+
+
+// function factorial(n) {
+//     if (n === 0) return 1;
+//     return (n == 1) ? 1 : (n * factorial(n - 1))
+// }
+
+// console.log(factorial(10));
+
+
+
+// function fib(n) {
+//     let a = 1;
+//     let b = 1;
+//     for (let i = 3; i <= n; i++) {
+//       let c = a + b;
+//       a = b;
+//       b = c;
+//     }
+//     return b;
+//   }
+  
+//   alert( fib(3) ); // 2
+//   alert( fib(7) ); // 13
+//   alert( fib(77) ); // 5527939700884757
+
+
+
+
+//   let list = {
+//     value: 1,
+//     next: {
+//       value: 2,
+//       next: {
+//         value: 3,
+//         next: {
+//           value: 4,
+//           next: null
+//         }
+//       }
+//     }
+//   };
+  
+//   function printList(list) {
+  
+//     alert(list.value); // выводим текущий элемент
+  
+//     if (list.next) {
+//       printList(list.next); // делаем то же самое для остальной части списка
+//     }
+  
+//   }
+  
+//   printList(list);
+
+
+
+
+
+
+//   let list = {
+//     value: 1,
+//     next: {
+//       value: 2,
+//       next: {
+//         value: 3,
+//         next: {
+//           value: 4,
+//           next: null
+//         }
+//       }
+//     }
+//   };
+  
+//   function printList(list) {
+//     let tmp = list;
+  
+//     while (tmp) {
+//       alert(tmp.value);
+//       tmp = tmp.next;
+//     }
+  
+//   }
+  
+//   printList(list);
+
+
+
+
+
+//   let list = {
+//     value: 1,
+//     next: {
+//       value: 2,
+//       next: {
+//         value: 3,
+//         next: {
+//           value: 4,
+//           next: null
+//         }
+//       }
+//     }
+//   };
+  
+//   function printList(list) {
+//     let tmp = list;
+  
+//     while (tmp) {
+//       alert(tmp.value);
+//       tmp = tmp.next;
+//     }
+  
+//   }
+  
+//   printList(list);
+
+
+
+
+
+// let list = {
+//     value: 1,
+//     next: {
+//       value: 2,
+//       next: {
+//         value: 3,
+//         next: {
+//           value: 4,
+//           next: null
+//         }
+//       }
+//     }
+//   };
+  
+//   function printReverseList(list) {
+  
+//     if (list.next) {
+//       printReverseList(list.next);
+//     }
+  
+//     alert(list.value);
+//   }
+  
+//   printReverseList(list);
+
+
+
+
+
+
+
+
+  // let list = {
+  //   value: 1,
+  //   next: {
+  //     value: 2,
+  //     next: {
+  //       value: 3,
+  //       next: {
+  //         value: 4,
+  //         next: null
+  //       }
+  //     }
+  //   }
+  // };
+  
+  // function printReverseList(list) {
+  //   let arr = [];
+  //   let tmp = list;
+  
+  //   while (tmp) {
+  //     arr.push(tmp.value);
+  //     tmp = tmp.next;
+  //   }
+  
+  //   for (let i = arr.length - 1; i >= 0; i--) {
+  //     alert( arr[i] );
+  //   }
+  // }
+  
+  // printReverseList(list);'
+
+
+
+
+
+//   let list = {
+//     value: 'a',
+//     next: {
+//       value: 'b',
+//       next: {
+//         value: 'c',
+//         next: {
+//           value: 'd',
+//           next: null
+//         }
+//       }
+//     }
+//   };
+
+  
+// function reversePrintList(list){
+  
+
+//   if(list.next){
+//     reversePrintList(list.next);
+//   }
+//   console.log(list.value);
+// }
+
+
+// reversePrintList(list);
+
+
+
+
+
+
+// let room = {
+//   number: 23
+// };
+
+// let meetup = {
+//   title: "Совещание",
+//   occupiedBy: [{name: "Иванов"}, {name: "Петров"}],
+//   place: room
+// };
+
+// // цикличные ссылки
+// room.occupiedBy = meetup;
+// meetup.self = meetup;
+
+// alert( JSON.stringify(meetup, function replacer(key, value) {
+//   if(key != "" && value == meetup) {
+//     return undefined;
+//   } else return value;
+// }));
+
+/* в результате должно быть:
+{
+  "title":"Совещание",
+  "occupiedBy":[{"name":"Иванов"},{"name":"Петров"}],
+  "place":{"number":23}
+}
+*/
+
+
+
+
+// function sum(...numbers) {
+//   return numbers.reduce((sum, number) => sum + number, 0);
+// }
+
+// console.log(sum(1, 2, 3)); // 6
+// console.log(sum(4, 5, 6, 7)); // 22
+
+
+
+
+
+// function addToArray(array, ...elements) {
+//   return [...array,...elements];
+// }
+
+// const initialArray = [1, 2, 3];
+// const newArray = addToArray(initialArray, 4, 5, 6);
+
+// console.log(newArray); // [1, 2, 3, 4, 5, 6]
+// console.log(initialArray); // [1, 2, 3] (без изменений)
+
+
+
+// function mergeObjects(...objects) {
+//   return objects.reduce((sum, obj) => {
+//     return {...sum,...obj};
+//   }, {});
+// }
+
+// const obj1 = { a: 1, b: 2 };
+// const obj2 = { b: 3, c: 4 };
+// const obj3 = { d: 5 };
+
+// const mergedObject = mergeObjects(obj1, obj2, obj3);
+
+// console.log(mergedObject); // { a: 1, b: 3, c: 4, d: 5 }
+
+
+
+
+
+// function mergeArrays(...arrays) {
+//   let newArr = [];
+
+//   for(let i = 0; i < arrays.length; i++){
+
+//     let innerArrayLength = arrays[i].length;
+    
+//     for(let j = 0; j < innerArrayLength; j++) {
+//         newArr.push(arrays[i][j]);
+//     }
+// }
+
+// let set = new Set(newArr);  
+
+
+//   return Array.from(set);
+// }
+
+// const result = mergeArrays([1, 2, 3], [3, 4, 5], [5, 6, 7]);
+// console.log(result); // Ожидаемый вывод: [1, 2, 3, 4, 5, 6, 7]
+
+
+
+
+
+
+// function sumNumbers(...numbers) {
+//   let result = 0;
+
+//   numbers.forEach((numb) => {
+//     if(typeof numb == 'number'){
+//       result += numb;
+//     }
+//   })
+
+//   return result;
+// }
+
+// const total = sumNumbers(1, 'a', 2, 3, true, 4);
+// console.log(total); // Ожидаемый вывод: 10
+
+
+
+
+// function combineObjects(...objects) {
+//   return objects.reduce((sum, obj) => {
+//         return {...sum,...obj};
+//     }, {});
+//   }
+
+// const combined = combineObjects(
+//   { a: 1, b: 2 },
+//   { b: 3, c: 4 },
+//   { d: 5, a: 6 }
+// );
+// console.log(combined); // Ожидаемый вывод: { a: 6, b: 3, c: 4, d: 5 }
+
+
+
+
+
+//                                                      3 (Область видимости переменных, замыкание)
+
+
+////////////////////////////////////
+// function sum(a) {
+
+//   return function(b) {
+//     return a + b;
+//   }
+
+// }
+
+
+// console.log(sum(5)(-3));
+//////////////////////////////////////
+
+
+
+
+
+
+
+
+// let arr = [1, 2, 3, 4, 5, 6, 7];
+
+// function inBetween(a, b){
+
+//   return function(x){
+   
+//    return x >= a && x <= b;;
+    
+//   };
+
+// }
+
+// function inArray(newArr){
+//   let c;
+
+//   return function(x){
+
+  
+//     for(c of newArr){
+//       if(c === x) return c;
+//     }
+    
+//   }
+// }
+
+
+// alert( arr.filter(inBetween(3, 6)) ); // 3,4,5,6
+
+// alert( arr.filter(inArray([1, 2, 5])) ); // 1,2
+
+
+
+
+// let users = [
+//   { name: "Иван", age: 20, surname: "Иванов" },
+//   { name: "Пётр", age: 18, surname: "Петров" },
+//   { name: "Анна", age: 19, surname: "Каренина" }
+// ];
+
+
+// function byField(fieldName){
+//     return (a, b) => a[fieldName] > b[fieldName] ? 1 : -1;
+// }
+
+
+
+
+// console.log(users.sort(byField('name')));
+// //users.sort(byField('age'));
+
+
+
+
+
+function createCacheDecorator(fn) {
+  // Создаем объект для хранения кэша
+  let cache = new Map();
+
+  // Возвращаем объект с методами для работы с кэшем
+  return {
+    // Метод для вызова функции с кэшированием результата
+    cachedFunction: function(...args) {
+      const key = JSON.stringify(args); // Генерируем ключ для кэша на основе аргументов
+      if (cache.has(key)) {
+        return cache.get(key); // Возвращаем значение из кэша, если оно уже там есть
+      }
+      const result = fn(...args); // Вызываем исходную функцию
+      cache.set(key, result); // Сохраняем результат в кэш
+      return result;
+    },
+
+    // Метод для сброса кэша
+    clearCache: function() {
+      cache.clear(); // Очищаем кэш
+    }
+  };
+}
+
+// Пример использования
+const slowFunction = (num) => {
+  console.log("Computing...");
+  return num * 2;
+};
+
+const { cachedFunction, clearCache } = createCacheDecorator(slowFunction);
+
+console.log(cachedFunction(5)); // Вывод: Computing... \n 10
+console.log(cachedFunction(5)); // Вывод: 10 (из кэша)
+clearCache();
+console.log(cachedFunction(5)); // Вывод: Computing... \n 10
+
+
+
+
+// function createTaskExecutor(taskHandler) {
+//   return function(task) {
+//     taskHandler(task);
+//   };
+// }
+
+// // Пример использования
+// const taskExecutor = createTaskExecutor((task) => {
+//   console.log(`Executing task: ${task}`);
+// });
+
+// // Вызов функции taskExecutor
+// taskExecutor('Task 1'); // Вывод: Executing task: Task 1
+// taskExecutor('Task 2'); // Вывод: Executing task: Task 2
+
+
+
+
+
+
+
+//let result = 0;
+
+// function createHistoricalCounter() {
+//   let moment = new Set();
+//   let count = 0;
+//   return {
+//     increment: function(){
+//         result += count + 1
+//         return moment.add(result);           
+//     },
+
+//     getValue: function(){
+//       return moment.size;
+//     },
+
+//     getHistory: function(){
+//       return Array.from(moment);
+//     },
+
+    
+//   };
+// }
+
+// // Пример использования
+// const historicalCounter = createHistoricalCounter();
+// historicalCounter.increment();
+// historicalCounter.increment();
+// historicalCounter.increment();
+// historicalCounter.increment();
+// historicalCounter.increment();
+// historicalCounter.increment();
+// console.log(historicalCounter.getValue());  // Вывод: 2
+// console.log(historicalCounter.getHistory()); // Вывод: [1, 2]
+
+
+
+
+//                                                        6(Объект функции, NFE)
+
+
+
+
+
+
+// function ask(question, ...handlers) {
+//   let isYes = confirm(question);
+
+//   for(let handler of handlers) {
+//     if (handler.length == 0) {
+//       if (isYes) handler();
+//     } else {
+//       handler(isYes);
+//     }
+//   }
+
+// }
+
+// // для положительных ответов вызываются оба типа обработчиков
+// // для отрицательных - только второго типа
+// ask("Вопрос?", () => alert('Вы ответили да'), result => alert(result));
+
+
+
+
+// function sayHi() {
+//   alert("Hi");
+
+//   // давайте посчитаем, сколько вызовов мы сделали
+//   sayHi.counter++;
+// }
+// sayHi.counter = 0; // начальное значение
+
+// sayHi(); // Hi
+// sayHi(); // Hi
+
+// alert( `Вызвана ${sayHi.counter} раза` ); // Вызвана 2 раза
+
+
+
+
+function makeCounter() {
+  // вместо
+  // let count = 0
+
+  function counter() {
+    return counter.count++;
+  };
+
+  counter.count = 0;
+
+  return counter;
+}
+
+let counter = makeCounter();
+alert( counter() ); // 0
+alert( counter() ); // 1
