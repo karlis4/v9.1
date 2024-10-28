@@ -4521,3 +4521,3330 @@ function makeCounter() {
 let counter = makeCounter();
 alert( counter() ); // 0
 alert( counter() ); // 1
+
+
+
+
+
+
+
+// function makeCounter() {
+//   let count = 0;
+
+//   function counter() {
+//     return count++;
+//   }
+
+//   counter.set = value => count = value;
+
+//   counter.decrease = () => count--;
+
+//   return counter;
+// }
+
+
+// let counter = makeCounter();
+
+// alert( counter() ); // 0
+// alert( counter() ); // 1
+
+// counter.set(10); // установить новое значение счётчика
+
+// alert( counter() ); // 10
+
+// counter.decrease(); // уменьшить значение счётчика на 1
+
+// alert( counter() ); // 10 (вместо 11)
+
+
+
+
+// function sum(a) {
+
+//   let currentSum = a;
+
+//   function f(b) {
+//     currentSum += b;
+//     return f;
+//   }
+
+//   f.toString = function() {
+//     return currentSum;
+//   };
+
+//   return f;
+// }
+
+// alert( sum(1)(2) ); // 3
+// alert( sum(5)(-1)(2) ); // 6
+// alert( sum(6)(-1)(-2)(-3) ); // 0
+// alert( sum(0)(1)(2)(3)(4)(5) ); // 15
+
+
+
+
+// function make(a){
+//   let count = a;
+
+//   function make12(b){
+//     count *= b;
+//     return make12;
+//   }
+
+//   make12.toString = function(){
+//     return count;
+//   };
+
+//   return make12;
+// }
+
+
+// console.log(+make(4)(5)(9));
+
+
+
+// function calculateArea(w, h){
+
+//   function rectangle(){
+//     return w * h;
+//   }
+
+//   return rectangle;
+
+// }
+
+
+// let rectangle = calculateArea(5, 3);
+
+// console.log(rectangle());
+
+
+
+// const operations = [
+//   (a, b) => {return a + b},
+//   (a, b) => {return a - b},
+//   (a, b) => {return a * b}
+// ];
+
+// // Функция для вывода истории операций
+// function showHistory(operations) {
+//   let history = "";
+//   operations.forEach((operation, index) => {
+//     // Используем свойство toString каждой операции
+//     history += `${index + 1}. ${operation.toString()}\n`; 
+//   });
+//   return history;
+// }
+
+// // Пример использования:
+// const sum = operations[0](5, 3); // Выполняет сложение
+// const difference = operations[1](10, 2); // Выполняет вычитание
+// const multiple = operations[2](10, 2);
+
+// console.log(showHistory(operations));
+
+
+
+
+// function showPrimes(n) {
+
+//   for (let i = 2; i < n; i++) {
+//     if (!isPrime(i)) continue;
+
+//     console.log(i);  // простое
+//   }
+// }
+
+// function isPrime(n) {
+//   for (let i = 2; i < n; i++) {
+//     if ( n % i == 0) return false;
+//   }
+//   return true;
+// }
+
+
+// console.log(showPrimes(10));
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                                                                       8 
+
+
+// Предположим, у нас есть веб-форма, и мы хотим показать сообщение пользователю, если он не отправил форму в течение 10 секунд
+// let formSubmitReminderTimeoutId;
+
+// function remindUserToSubmitForm() {
+//     formSubmitReminderTimeoutId = setTimeout(() => {
+//         alert("Пожалуйста, отправьте форму.");
+//     }, 10000); // 10000 миллисекунд = 10 секунд
+// }
+
+// // Функция, которая вызывается, когда форма отправлена
+// function onFormSubmit() {
+//     // Отменяем напоминание, так как форма уже отправлена
+//     clearTimeout(formSubmitReminderTimeoutId);
+//     // Другая логика обработки отправки формы
+//     console.log("Форма отправлена.");
+// }
+
+// // Запускаем напоминание пользователю
+// remindUserToSubmitForm();
+
+// // Представим, что форма была отправлена пользователем через 5 секунд
+// setTimeout(onFormSubmit, 5000);
+
+
+
+
+// let timerId = setTimeout(() => {
+//   console.log("Таймер сработал!");
+// }, 3000); // Запускаем таймер на 3 секунды
+
+// // Через 1 секунду отменяем таймер
+// setTimeout(() => {
+//   clearTimeout(timerId);
+//   console.log("Таймер отменен!");
+// }, 1000); 
+
+
+
+
+// let timerId = setTimeout(function tick() {
+//   alert('tick');
+//   timerId = setTimeout(tick, 5000); // (*)
+// }, 2000);
+
+
+
+
+
+
+// function printNumbers(from, to) {
+//   let current = from;
+
+//   let timerId = setInterval(function() {
+//     alert(current);
+//     if (current == to) {
+//       clearInterval(timerId);
+//     }
+//     current++;
+//   }, 1000);
+// }
+
+// // использование:
+// printNumbers(5, 10);
+
+
+
+
+// let timerId = setTimeout(function printNumbers(from, to) {
+//   let delay = 1000;
+//   for(from = 0, to = 8; from <= to; from++){
+//     delay += 1000;
+//     alert(from);
+//   }
+  
+//   timerId = setTimeout(printNumbers, delay); // (*)
+// }, 1000);
+
+
+
+
+
+// function printDaysReverse(from, to){
+//   let days = ['понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+  
+//   let timerId = setInterval(function(){ 
+//     if(to <= from) {
+//       alert(days[from - to++]);
+//     } else {
+//         clearInterval(timerId);
+//     };
+//     }, 1000);
+    
+
+// }
+
+
+// printDaysReverse(6, 0);
+
+
+
+// function printNumbersStep(from, to, step){
+//   step = 2;
+//   let timerId = setTimeout(function func(){
+//     if(from <= to){
+//       alert(from);
+//     from += step;
+//       timerId = setTimeout(func, step * 1000);
+//     } else {
+//       clearTimeout(timerId);
+//     }
+
+    
+//   }, step * 1000)
+
+  
+// }
+
+// printNumbersStep(1, 10, 2);
+
+
+
+
+
+
+
+
+
+
+// function countdownTimer(seconds){
+//     let timerId = setInterval(function(){
+//     if(seconds !== 0){
+//       alert(seconds)
+//       seconds--;
+//   } else {
+//     alert("Время вышло!");
+//     clearInterval(timerId);
+//   }
+//   }, 1000);
+// }
+
+// countdownTimer(5);
+
+
+//let guessNum = +prompt("Введите число: ");
+
+// function generateRandomNumber(min, max){
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   return Math.floor(Math.random() * (max - min + 1) + min); 
+// }
+
+// let result = generateRandomNumber(
+//   +prompt("Введите минимальное число диапазона: "), 
+//   +prompt("Введите максимальное число диапазона: "));
+
+
+// function checkNumber(guess, secretNumber){
+//   let count = new Map();
+//   let c = 0;
+
+//   let timerId = setTimeout(function func(){  
+//     clearTimeout(timerId);
+
+//     if(secretNumber < 50) {
+//       alert("Число находится в диапазоне от 0 до 50");
+//     }
+
+//       if(guess === secretNumber){
+//         clearTimeout(timerId);
+//         alert("Угадал!");
+//       } else {
+//         while(guess !== secretNumber){
+//           if(guess){
+//             c++
+//           }
+
+//           if(!count.has(c)) {
+//             count.set(`${c} попытка`, c);
+//           }
+
+          
+//           guess = +prompt("Введите число ещё раз: ");
+//         } 
+        
+//         if(guess === secretNumber) {
+//             c++;
+          
+//           if(!count.has(c)) {
+//             count.set(`${c} попытка`, c);
+//           }
+//           alert("Угадал!");
+//       }
+      
+//       //if(timerId === 30) alert("Время вышло");
+      
+//       }
+
+//     for (let keys of count.keys()) {
+//       console.log(keys);
+//     }
+  
+//   }, 30000);
+// }
+
+// console.log(checkNumber(+prompt("Введите число: "), result));
+
+
+
+
+
+// function generateRandomNumber(min, max) {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+// }
+
+// let result = generateRandomNumber(
+//   +prompt("Введите минимальное число диапазона: "),
+//   +prompt("Введите максимальное число диапазона: ")
+// );
+
+// function checkNumber(guess, secretNumber, count = new Map()) {
+//   let c = count.size + 1;
+
+//   if (secretNumber < 50) {
+//     alert("Число находится в диапазоне от 0 до 50");
+//   }
+
+//   if (guess === secretNumber) {
+//     alert("Угадал!");
+//     count.set(`${c} попытка`, c);
+//     for (let keys of count.keys()) {
+//       console.log(keys);
+//     }
+//     return; // Выход из функции, чтобы не продолжать игру после угадывания
+//   }
+
+//   count.set(`${c} попытка`, c);
+
+//   guess = +prompt("Введите число ещё раз: ");
+
+//   checkNumber(guess, secretNumber, count); // Рекурсивный вызов функции
+// }
+
+// checkNumber(+prompt("Введите число: "), result);
+
+
+
+
+
+
+// function sumArray(arr) {
+//   if (arr.length === 0) {
+//     return 0; // Базовый случай: если массив пустой, возвращаем 0
+//   } else {
+//     return arr[0] + sumArray(arr.slice(1)); // Рекурсивный случай: возвращаем сумму первого элемента и рекурсивного вызова для остальной части массива
+//   }
+// }
+
+// // Пример использования
+// const arr = [1, 2, 3, 4, 5];
+// const sum = sumArray(arr);
+// console.log(sum); // Вывод: 15
+
+
+
+
+// function slow(x) {
+//   // здесь могут быть ресурсоёмкие вычисления
+//   alert(`Called with ${x}`);
+//   return x;
+// }
+
+// function cachingDecorator(func) {
+//   let cache = new Map();
+
+//   return function(x) {
+//     if (cache.has(x)) {    // если кеш содержит такой x,
+//       return cache.get(x); // читаем из него результат
+//     }
+
+//     let result = func(x); // иначе, вызываем функцию
+
+//     cache.set(x, result); // и кешируем (запоминаем) результат
+//     return result;
+//   };
+// }
+
+// slow = cachingDecorator(slow);
+
+// alert( slow(1) ); // slow(1) кешируем
+// alert( "Again: " + slow(1) ); // возвращаем из кеша
+
+// alert( slow(2) ); // slow(2) кешируем
+// alert( "Again: " + slow(2) ); // возвращаем из кеша
+
+
+
+
+
+
+
+// let worker = {
+//   someMethod() {
+//     return 1;
+//   },
+
+//   slow(x) {
+//     alert("Called with " + x);
+//     return x * this.someMethod(); // (*)
+//   }
+// };
+
+// function cachingDecorator(func) {
+//   let cache = new Map();
+//   return function(x) {
+//     if (cache.has(x)) {
+//       return cache.get(x);
+//     }
+//     let result = func.call(this, x); // теперь 'this' передаётся правильно
+//     cache.set(x, result);
+//     return result;
+//   };
+// }
+
+// worker.slow = cachingDecorator(worker.slow); // теперь сделаем её кеширующей
+
+// alert( worker.slow(2) ); 
+// alert( worker.slow(2) ); 
+
+
+
+
+
+
+
+
+
+// let worker = {
+//   slow(min, max) {
+//     alert(`Called with ${min},${max}`);
+//     return min + max;
+//   }
+// };
+
+// function cachingDecorator(func, hash) {
+//   let cache = new Map();
+//   return function() {
+//     let key = hash(arguments); // (*)
+//     if (cache.has(key)) {
+//       return cache.get(key);
+//     }
+
+//     let result = func.call(this, ...arguments); // (**)
+
+//     cache.set(key, result);
+//     return result;
+//   };
+// }
+
+// function hash(args) {
+//   return args[0] + ',' + args[1];
+// }
+
+// worker.slow = cachingDecorator(worker.slow, hash);
+
+// alert( worker.slow(3, 5) ); // работает
+// alert( "Again " + worker.slow(3, 5) ); // аналогично (из кеша)
+
+
+
+
+
+
+
+
+
+
+
+
+// function work(a, b) {
+//   alert( a + b ); // произвольная функция или метод
+// }
+
+// function spy(func) {
+
+//   function wrapper(...args) {
+//     // мы используем ...args вместо arguments для хранения "реального" массива в wrapper.calls
+//     wrapper.calls.push(args);
+//     return func.apply(this, args);
+//   }
+
+//   wrapper.calls = [];
+
+//   return wrapper;
+// }
+
+// work = spy(work);
+
+// work(1, 2); // 3
+// work(4, 5); // 9
+
+// for (let args of work.calls) {
+//   alert( 'call:' + args.join() ); // "call:1,2", "call:4,5"
+// }
+
+
+
+
+
+
+
+
+
+// function f(x) {
+//   alert(x);
+// }
+
+// function delay(f, ms){
+
+//   return function(...args){
+//     let timerId = setTimeout(() => f.apply(this, args), ms);
+
+//     return timerId;
+//   }
+  
+// }
+
+// let f1000 = delay(f, 1000);
+// let f1500 = delay(f, 15000);
+
+// f1000("test"); // показывает "test" после 1000 мс
+// f1500("test"); // показывает "test" после 1500 мс
+
+
+
+
+
+
+// function debounce(func, ms) {
+//   let timeout;
+//   return function() {
+//     clearTimeout(timeout);
+//     timeout = setTimeout(() => func.apply(this, arguments), ms);
+//   };
+// }
+
+
+
+
+
+// function debounce(func, ms) {
+//   let timeout;
+//   return function(...args) {
+//     clearTimeout(timeout); // Отменяем предыдущий таймер
+//     timeout = setTimeout(() => func.apply(this, args), ms); // Запускаем новый таймер
+//   };
+// }
+
+// function logMessage(message) {
+//   console.log(`Лог: ${message}`);
+// }
+
+// const debouncedLog = debounce(logMessage, 1000); // Задержка 1 секунда
+
+// debouncedLog('Сообщение 1'); // Вывод в консоль: "Лог: Сообщение 1"
+// debouncedLog('Сообщение 2'); // Ничего не выводится, т.к. задержка ещё не закончилась
+// debouncedLog('Сообщение 3'); // Ничего не выводится, т.к. задержка ещё не закончилась
+
+// setTimeout(() => {
+//   debouncedLog('Сообщение 4'); // Вывод в консоль: "Лог: Сообщение 4"
+// }, 1500);
+
+
+
+// function f(a) {
+//   console.log(a)
+// }
+
+// function throttle(func, ms) {
+
+//   let isThrottled = false,
+//     savedArgs,
+//     savedThis;
+
+//   function wrapper() {
+
+//     if (isThrottled) { // (2)
+//       savedArgs = arguments;
+//       savedThis = this;
+//       return;
+//     }
+
+//     func.apply(this, arguments); // (1)
+
+//     isThrottled = true;
+
+//     setTimeout(function() {
+//       isThrottled = false; // (3)
+//       if (savedArgs) {
+//         wrapper.apply(savedThis, savedArgs);
+//         savedArgs = savedThis = null;
+//       }
+//     }, ms);
+//   }
+
+//   return wrapper;
+// }
+
+
+
+
+
+// let f1000 = throttle(f, 1000);
+
+// f1000(1); // показывает 1
+// f1000(2); // (ограничение, 1000 мс ещё нет)
+// f1000(3); // (ограничение, 1000 мс ещё нет)
+
+//когда 1000 мс истекли ...
+//...выводим 3, промежуточное значение 2 было проигнорировано
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+// function sayHello(name) {
+//   return `Привет, ${name}!`;
+// }
+
+// function greet(func){
+//   let result;
+//   let result1;
+//   return function(againName){
+//     result = func.call(this, againName);
+
+//     if(againName){
+//       result1 = "Привет!";
+//     }
+
+//     return result1;
+//   }
+// }
+
+// const greetedSayHello = greet(sayHello);
+
+// console.log(greetedSayHello("Alice"));
+///////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+// function printText(text) {
+//   console.log(text);
+// }
+
+// function convert(func){
+//   //let res;
+//   return function(word){
+//     return func.call(this, word.toUpperCase());
+//   }
+// }
+
+// const convertedPrintText = convert(printText);
+
+// console.log(convertedPrintText("hello")); // Вывод: "HELLO"
+
+
+
+
+
+// function logMessage(message) {
+//   console.log(message);
+// }
+
+// function sayWith(greet, func){
+//      func.call(user, `${greet}, ${user.name}!`);
+// }
+
+
+// const user = { name: "Bob" };
+
+// sayWith("Bob", "Привет", logMessage);
+
+
+
+
+
+// function calculateSum(a, b) {
+//   return a + b;
+// }
+
+
+// function logger(func){
+//   let dateStart = new Date();
+//   let result = 0;
+//   return function(){
+//     let funcResult = func.apply(this, arguments);
+//     let dateEnd = new Date();
+//     result = dateEnd - dateStart;
+//     return `Функция: ${func.name}, 
+//     Аргументы: ${arguments[0]}, ${arguments[1]}, 
+//     Результат: ${funcResult}, 
+//     Время: ${result}`;
+
+//   }
+// }
+
+// const loggedSum = logger(calculateSum);
+
+// console.log(loggedSum(2, 3)); // Вывод: "Функция: calculateSum, Аргументы: 2, 3, Результат: 5, Время: [время в мс]"
+
+
+
+
+
+
+
+// function logMessage(message) {
+//   console.log(`Лог: ${message}`);
+// }
+
+// function repeat(func, ms){
+//   return function(greet){
+//     setInterval(() => func.call(this, greet), ms);
+//   }
+// }
+
+// const repeatingLog = repeat(logMessage, 1000); // Вызов каждые 1 секунду
+
+// repeatingLog("Привет!");
+
+
+
+
+
+
+
+
+// function logMessage(message) {
+//   console.log(`Лог: ${message}`);
+// }
+
+// function delay(func, ms){
+//   return function(goodbye){
+//     let timerId = setTimeout(function f(){
+//       func.call(this, goodbye);
+
+//       timerId = setTimeout(f, 10000);
+//     }, ms);
+//   }
+// }
+
+// const delayedLog = delay(logMessage, 2000); // Вызов с задержкой в 2 секунды
+
+// delayedLog("Пока!"); 
+
+
+
+
+
+
+
+// function logMessage(message) {
+//   console.log(`Лог: ${message}`);
+// }
+
+// function throttle(func, calls){
+//   return function(message){
+//     let timerId = setTimeout(function f(){
+//       if(timerId === calls + 1){
+//         clearTimeout(timerId);
+//         return timerId;
+//       }
+
+//       func.call(this, message);
+
+//     }, 1000)
+//   }
+// }
+
+// const throttledLog = throttle(logMessage, 2); // Ограничение до 2 вызовов в секунду
+
+// throttledLog("Сообщение 1"); // Вывод: "Лог: Сообщение 1"
+// throttledLog("Сообщение 2"); // Вывод: "Лог: Сообщение 2"
+// throttledLog("Сообщение 3"); // Вывод: Ничего не выводится, т.к. ограничение достигнуто
+// throttledLog("Сообщение 4"); // Вывод: "Лог: Сообщение 4" через 1 секунду
+
+
+
+// function logMessage(message) {
+//   console.log(`Лог: ${message}`);
+// }
+
+// function throttle(func, callsPerSecond) {
+//   let lastCallTime = 0;
+//   let count = 0;
+
+//   return function(message) {
+//     const now = Date.now();
+//     if (now - lastCallTime >= 1000 / callsPerSecond) { // Условие проверки времени
+//       lastCallTime = now;
+//       count = 0; // Сброс счетчика после истечения секунды
+//       func.call(this, message); 
+//     } else if (count < callsPerSecond) {
+//       count++;
+//       func.call(this, message); 
+//     }
+//   };
+// }
+
+// const throttledLog = throttle(logMessage, 2); // Ограничение до 2 вызовов в секунду
+
+// throttledLog("Сообщение 1"); // Вывод: "Лог: Сообщение 1"
+// throttledLog("Сообщение 2"); // Вывод: "Лог: Сообщение 2"
+// throttledLog("Сообщение 3"); // Вывод: "Лог: Сообщение 3"
+// throttledLog("Сообщение 4"); // Вывод: "Лог: Сообщение 4"
+// throttledLog("Сообщение 5"); // Вывод: Ничего не выводится, т.к. ограничение достигнуто
+// throttledLog("Сообщение 6"); // Вывод: "Лог: Сообщение 6" через 1 секунду
+
+
+
+
+
+
+
+// function longRunningTask() {
+//   console.log("Начало выполнения задачи");
+//   setTimeout(() => {
+//     console.log("Задача завершена");
+//   }, 5000);
+// }
+
+// function cancellable(func){
+//   return function cancel(){
+//     clearTimeout(func());
+//   }
+// }
+
+
+// const cancellableTask = cancellable(longRunningTask);
+
+// cancellableTask(); // Начало выполнения задачи
+// setTimeout(cancellableTask.cancel, 2000); // Отмена через 2 секунды
+
+// // Вывод: "Начало выполнения задачи", "Задача отменена"
+
+
+
+
+// function greet() {
+//   return `Hello, ${this.name}!`;
+// }
+
+// function changeContext(func, user){
+  
+//     let newGreet = func.call(user, this.name);
+//     return newGreet;
+  
+// }
+
+// const user = { name: 'Alice' };
+
+// console.log(changeContext(greet, user)); // Должно вывести: "Hello, Alice!"
+// console.log(changeContext(greet, user, ['arguments']));
+
+
+
+
+
+// function add(a, b) {
+//   return a + b;
+// }
+
+// function logDecorator(funcAdd){
+//   return function(){
+//     return `${funcAdd.name}: ${funcAdd.apply(this, arguments)}`;
+//   }
+// }
+
+// const loggedAdd = logDecorator(add);
+
+// console.log(loggedAdd(1, 2)); // Должно вывести:
+// // Вызывается функция 'add' с аргументами [1, 2]
+// // Результат выполнения функции 'add': 3
+
+
+
+// function printMessage(message) {
+//   console.log(message);
+// }
+
+// function taskScheduler(func, ms, bool, textMessage){
+//   let timerId = 0;
+//   return function(){
+//     if(bool === true){
+//       setTimeout(() => func.call(this, textMessage), ms);
+//       clearTimeout();
+//     } else if(bool === false){
+//       timerId = setInterval(() => func.call(this, textMessage), ms);
+//     }
+//   }
+// }
+
+// const task = taskScheduler(printMessage, 1000, true, 'Hello, World!');
+// task(); // Выведет "Hello, World!" через 1 секунду и остановит выполнение
+
+// const repeatingTask = taskScheduler(printMessage, 2000, false, 'Repeating message');
+// // Выведет "Repeating message" каждую вторую секунду
+
+// setTimeout(repeatingTask, 10000); // Остановит повторение через 10 секунд
+
+
+
+
+
+// function taskScheduler(func, ms, isSingleShot, textMessage) {
+//   let timerId = null;
+
+//   function schedule() {
+//     if (isSingleShot) {
+//       timerId = setTimeout(() => {
+//         func.call(this, textMessage);
+//         timerId = null; // Обнуляем timerId после выполнения таймера
+//       }, ms);
+//     } else {
+//       timerId = setInterval(() => {
+//         func.call(this, textMessage);
+//       }, ms);
+//     }
+//   }
+
+//   function cancel() {
+//     if (isSingleShot && timerId !== null) {
+//       clearTimeout(timerId);
+//     } else if (!isSingleShot) {
+//       clearInterval(timerId);
+//     }
+//     timerId = null; // Обнуляем timerId после остановки таймера/интервала
+//   }
+
+//   return {
+//     start: schedule,
+//     stop: cancel
+//   };
+// }
+
+// const printMessage = (message) => console.log(message);
+
+// const task = taskScheduler(printMessage, 1000, true, 'Hello, World!');
+// task.start(); // Выведет "Hello, World!" через 1 секунду и остановит выполнение
+// // task.stop(); // Можно вызвать, чтобы остановить таймер, если он ещё не выполнен
+
+// const repeatingTask = taskScheduler(printMessage, 2000, false, 'Repeating message');
+// repeatingTask.start(); // Выведет "Repeating message" каждую вторую секунду
+
+// setTimeout(() => {
+//   repeatingTask.stop(); // Остановит повторение через 10 секунд
+// }, 10000);
+
+
+
+
+
+// function logMessage(message) {
+//   console.log(`Лог: ${message}`);
+// }
+
+// function limitedCalls(funcM, funcR, calls){
+//   return function(){
+
+//     let timerId = setInterval(() => {funcM.call(this, funcR())
+//       clearInterval(timerId); 
+//   }, 1000);
+    
+//   if(timerId === calls){
+//     clearInterval(timerId);
+//     return "Завершить работу";
+//   }
+
+//   }
+  
+// }
+
+// function getRandomNumber() {
+//   return Math.floor(Math.random() * 10); 
+// }
+
+// const limitedGetRandomNumber = limitedCalls(logMessage, getRandomNumber, 3); // Ограничение до 3 вызовов
+
+// limitedGetRandomNumber(); // Вывод: "Лог: 5" (случайное число)
+// limitedGetRandomNumber(); // Вывод: "Лог: 2" (случайное число)
+// limitedGetRandomNumber(); // Вывод: "Лог: 9" (случайное число)
+// limitedGetRandomNumber(); // Ничего не выводится, так как ограничение достигнуто
+
+
+
+
+// function partial(func, ...argsBound) {
+//   return function(...args) { // (*)
+//     return func.call(this, ...argsBound, ...args);
+//   }
+// }
+
+// // использование:
+// let user = {
+//   firstName: "John",
+//   say(time, phrase) {
+//     alert(`[${time}] ${this.firstName}: ${phrase}!`);
+//   }
+// };
+
+// // добавляем частично применённый метод с фиксированным временем
+// user.sayNow = partial(user.say, new Date().getHours() + ':' + new Date().getMinutes());
+
+// user.sayNow("Hello");
+// // Что-то вроде этого:
+// // [10:00] John: Hello!
+
+
+
+
+
+
+// function askPassword(ok, fail) {
+//   let password = prompt("Password?", '');
+//   if (password == "rockstar") ok();
+//   else fail();
+// }
+
+// let user = {
+//   name: 'Вася',
+
+//   loginOk() {
+//     alert(`${this.name} logged in`);
+//   },
+
+//   loginFail() {
+//     alert(`${this.name} failed to log in`);
+//   },
+
+// };
+
+// askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
+
+
+
+
+
+
+
+
+// function askPassword(ok, fail) {
+//   let password = prompt("Password?", '');
+//   if (password == "rockstar") ok();
+//   else fail();
+// }
+
+// let user = {
+//   name: 'John',
+
+//   login(result) {
+//     alert( this.name + (result ? ' logged in' : ' failed to log in') );
+//   }
+// };
+
+// askPassword(user.login.bind(user, true), user.login.bind(user, false)); // ?
+
+
+
+
+
+
+
+
+
+
+// const user = {
+//   name: 'Иван',
+//   sayHello(gr) {
+//     console.log(`${gr}, ${this.name}!`);
+//   }
+// };
+
+// user.sayGoodbye = user.sayHello.bind(user);
+// let greeting = prompt("Введите приветствие");
+// user.sayGoodbye(greeting);
+
+
+
+
+
+// function processCallback(callback) {
+//   console.log('Обработка...');
+//   setTimeout(() => {
+//     callback.call(this); // Вызов переданной функции
+//   }, 1000);
+// }
+
+// const user = {
+//   name: 'Иван',
+//   sayHello() {
+//     console.log(`Привет, ${this.name}!`);
+//   }
+// };
+
+
+
+// processCallback(user.sayHello.bind(user));
+
+
+
+
+
+
+
+
+
+// function sayName() {
+//   console.log(`Имя: ${this.name}`);
+// }
+
+// function changeContext(func, context){
+//   return function(){
+//     return func.bind(context);
+//   }
+// }
+
+// const user = { name: 'Иван' };
+// const sayNameWithUser = changeContext(sayName, user); 
+
+// sayNameWithUser()(); // Вывод: "Имя: Иван"
+
+
+
+// let list = {
+//   value: 1,
+//   next: {
+//     value: 2,
+//     next: {
+//       value: 3,
+//       next: {
+//         value: 4,
+//         next: null
+//       }
+//     }
+//   }
+// };
+
+
+
+// function printList(list) {
+//   let result = []; // Массив для хранения значений
+//   result.push(list.value); // Добавляем значение текущего узла
+
+//   if (list.next !== null) { // Проверяем, есть ли следующий узел
+//     result = result.concat(printList(list.next)); // Рекурсивно обрабатываем следующий узел
+//   }
+
+//   return result; // Возвращаем массив
+// }
+
+// console.log(printList(list)); // Вывод: [1, 2, 3, 4]
+
+
+
+
+// const Counter = (function() {
+//   let count = 0;
+//   return {
+//     increment: function() {
+//       count++;
+//       console.log("Счетчик увеличен!"); //  Это  сообщение  должно  выводиться  при  каждом  увеличении  счетчика
+//     }
+//   };
+// })();
+
+// const Logger = (function() {
+//   return {
+//     log: function(message) {
+//       console.log(message);
+//     }
+//   };
+// })();
+
+// //  Привязываем  log  к  increment
+// Counter.increment = Counter.increment.bind(null, Logger.log); 
+
+// Counter.increment(); //  Вывод:  "Счетчик увеличен!" 
+// Counter.increment(); //  Вывод:  "Счетчик увеличен!"
+
+
+
+
+
+
+
+
+// function sayHello(name) {
+//   console.log(`Привет, ${name}!`); 
+// }
+
+
+// function createTimer(func, delay){
+
+//   return {
+//     start: function(){
+//       setTimeout(() => func.call(this), delay);
+//     }
+//   };
+// }
+
+// const timer = createTimer(sayHello.bind(null, "Мир"), 2000); //  Создаем  таймер,  привязываем  sayHello  с  аргументом  "Мир"  и  задержкой  2  секунды
+// timer.start(); //  Запускаем  таймер
+
+// //  Вывод:  через  2  секунды  в  консоли  появится  "Привет, Мир!" 
+
+
+
+
+
+
+
+
+//  Создаем  меню
+// const menu = [
+//   { name: "Пицца  Маргарита", price: 500, description: "Классическая  пицца  с  томатным  соусом  и  моцареллой", category: "Пицца" },
+//   { name: "Суп  Томатный", price: 250, description: "Вкусный  и  свежий  томатный  суп", category: "Супы" },
+//   { name: "Салат  Цезарь", price: 300, description: "Салат  с  курятиной,  сыром  Пармезан  и  заправкой  Цезарь", category: "Салаты" },
+// ];
+
+// //  Создаем  корзину
+// const cart = {
+//   items: []
+// };
+
+// let orderItem = new Map();
+
+
+// function del(dish){
+//   console.log("Ожидание...")
+//   setTimeout(() => console.log(`Блюдо ${dish} удалёно из корзины`), 2000);
+// }
+
+// function addToCart(dishName, quantity){
+  
+// return function add(d){
+//   menu.filter((dish) => {
+//     if(d !== dish.name) return;
+//     if(cart.items.includes(dish)){
+//       dish.quantity += quantity;
+//       for(let key of orderItem.keys()){
+//         if(orderItem.has(key)){
+//           orderItem.set(key, `Количество заказов ${dish.name}: ${quantity + quantity}`);
+//         }
+//       }
+//     }
+
+    
+
+
+//     if(menu.includes(dish) && !(cart.items.includes(dish))){
+//       if(dish.name === d){
+//         dish.quantity = quantity
+//         cart.items.push(dish);
+
+//         if(!orderItem.has(dish)){
+//           orderItem.set(`Блюдо ${dish.name}`, `Количество заказов ${dish.name}: ${quantity}`);
+//         }
+        
+        
+//       }
+//     }
+
+//   });
+
+//   return add;
+// }
+
+
+
+
+// }
+
+// function removeFromCartForDecorator(func, dishName){
+//   return function(){
+//     cart.items.map((d, i) => {
+//       if(cart.items.indexOf(d)){
+//         if(d.name === dishName){
+//         cart.items.splice(i, 1);
+//         orderItem.delete(`Блюдо ${d.name}`);
+//         func.call(this, dishName);
+//         }
+//       }
+      
+      
+//     })}
+// }
+
+// function getTotalPrice(){
+//   let endSum = cart.items.reduce((sum, dish) => {
+//     return sum += dish.price * dish.quantity;
+//   }, 0)
+
+//   return endSum;
+// }
+
+// function showCart(){
+//   orderItem.forEach((value, key, map) => {
+//     console.log(`${key}, ${value}`)
+//   })
+// }
+
+
+// //  Добавляем  блюда  в  корзину
+// addToCart = addToCart.bind(menu);
+
+// addToCart("Суп  Томатный", 1)("Суп  Томатный", 1)("Суп  Томатный", 1)("Салат  Цезарь", 1);
+
+
+
+// //  Выводим  корзину
+
+// showCart();
+
+// //  Удаляем  блюдо
+// let removeFromCart = removeFromCartForDecorator.bind(menu);
+// removeFromCart = removeFromCartForDecorator(del, "Салат  Цезарь");
+// removeFromCart("Салат  Цезарь");
+
+
+// getTotalPrice();
+// //  Выводим  корзину  снова
+// showCart();
+
+// //  Получаем  общую  стоимость
+// console.log("Общая  стоимость:", getTotalPrice());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                                                   1(флаги и дескрипторы свойств)
+
+
+
+
+
+
+
+// let user = {
+//   name: "john",
+//   age: 30,
+//   occupation: "programming"
+// }
+
+
+
+
+// "use strict";
+
+// let user = {};
+
+
+// Object.defineProperties(user, {
+//   name: {value: "John", configurable: true},
+//   age: {value: 30},
+//   occupation: {value: "programming"}
+// });
+
+// //user.name = "Pete";
+
+// //alert(user.name);
+
+
+// Object.defineProperty(user, "name", {
+//   writable: true,
+// });
+
+
+// user.name = "Pete";
+
+// alert(user.name);
+
+
+// delete user.name;
+
+// alert(user.name);
+
+
+
+
+
+
+
+
+
+//                                                       2(геттеры и сеттеры)
+
+
+// let user = {
+//   name: "John",
+//   surname: "Smith",
+
+//   get fullName() {
+//     return `${this.name} ${this.surname}`;
+//   },
+
+//   set fullName(value) {
+//     [this.name, this.surname] = value.split(" ");
+//   }
+// };
+
+// // set fullName запустится с данным значением
+// user.fullName = "Alice Cooper";
+
+// alert(user.name); // Alice
+// alert(user.surname); // Cooper
+
+
+
+
+
+// let user = {
+//   get name() {
+//     return this._name;
+//   },
+
+//   set name(value) {
+//     if (value.length < 4) {
+//       alert("Имя слишком короткое, должно быть более 4 символов");
+//       return;
+//     }
+//     this._name = value;
+//   }
+// };
+
+// user.name = "Pete";
+// alert(user.name); // Pete
+
+// user.name = ""; // Имя слишком короткое...
+
+
+
+
+
+
+
+// function User(name, birthday) {
+//   this.name = name;
+//   this.birthday = birthday;
+
+//   // возраст рассчитывается из текущей даты и дня рождения
+//   Object.defineProperty(this, "age", {
+//     get() {
+//       let todayYear = new Date().getFullYear();
+//       return todayYear - this.birthday.getFullYear();
+//     }
+//   });
+// }
+
+// let john = new User("John", new Date(1992, 6, 1));
+
+// alert( john.birthday ); // доступен как день рождения
+// alert( john.age );      // ...так и возраст
+
+
+
+
+
+// function sum(a) {
+
+//   let currentSum = a;
+
+//   function f(b) {
+//     currentSum += b;
+//     return f;
+//   }
+
+//   f.toString = function() {
+//     return currentSum;
+//   };
+
+//   return f;
+// }
+
+// alert( sum(1)(2) ); // 3
+// alert( sum(5)(-1)(2) ); // 6
+// alert( sum(6)(-1)(-2)(-3) ); // 0
+// alert( sum(0)(1)(2)(3)(4)(5) ); // 15
+
+
+
+
+// let thermostat = {
+//   get temperature(){
+//     return this._temperature;
+//   },
+
+//   set temperature(value){
+//     if(!(value > 10 && value < 30)) {
+//       console.log(`Число ${value} не соответствует диапазону`);
+//       return;
+//     }
+
+//     this._temperature = value;
+//   }
+// };
+
+// t = +prompt("Введите число: ");
+
+// console.log(thermostat.temperature = t);
+
+// console.log(thermostat.temperature);
+
+
+
+
+// let counter = {
+//   count: 0,
+
+//   get value(){
+//     return this._value;
+//   },
+
+//   set value(value) {
+//     if(value < 0){
+//       this.count--;
+//       console.log("Число является отрицательным");
+//       console.log("Счётчик уменьшен");
+//       return;
+//     }
+
+//     if(value && value !== undefined && value !== null){
+//       this.count++;
+//       console.log("Счётчик увеличен");
+//       this._value = value;
+//     }
+//   }
+// }
+
+// let c = +prompt("Введите число");
+
+// console.log(counter.value = c);
+
+// console.log(counter.value);
+
+
+
+
+
+
+
+// let counter = {
+//   value: 0,
+//   limit: 15,
+
+//   get newValue(){
+//     return this.value;
+//   }, 
+
+//   set newValue(val){
+//     if(val > this.limit){
+//       this.value = this.limit;
+//       return;
+//     }
+
+//     if(this.value !== 0){
+//       this.value = val;
+//       console.log(`Вы поменяли значение на ${val}`);
+//       return;
+//     } else {
+//       this.value = val;
+//       return;
+//     }
+//   }
+// }
+
+
+// let c = +prompt("Введите число");
+
+// console.log(counter.newValue = c);
+
+// console.log(counter.newValue);
+
+// console.log(counter.newValue = c);
+
+// console.log(counter.newValue);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                                                    1(Прототипное наследование)      
+
+
+
+// let animal = {
+//   eats: true
+// };
+
+// let rabbit = {
+//   jumps: true
+// };
+
+// rabbit.__proto__ = animal; // (*)
+
+// // теперь мы можем найти оба свойства в rabbit:
+// alert( rabbit.eats ); // true (**)
+// alert( rabbit.jumps ); // true
+
+
+
+
+
+// const myObject = {
+//   name: 'John',
+//   age: 30
+// };
+
+// // У myObject нет свойства toString, но мы можем его использовать, 
+// // так как он наследуется от Object.prototype
+// console.log(myObject.toString()); // [object Object]
+
+// // Если мы добавим свойство toString в myObject, 
+// // оно переопределит то, которое было унаследовано от Object.prototype
+// myObject.toString = function() {
+//   return `My name is ${this.name} and I am ${this.age} years old.`;
+// };
+
+// console.log(myObject.toString());
+
+
+
+
+
+// let animal = {
+//   eats: true
+// };
+
+// let rabbit = {
+//   jumps: true
+// };
+
+// rabbit.__proto__ = animal; // (*)
+
+// // теперь мы можем найти оба свойства в rabbit:
+// alert( rabbit.eats ); // true (**)
+// alert( rabbit.jumps ); // true
+
+
+
+
+
+
+
+// let animal = {
+//   eats: true,
+//   walk() {
+//     alert("Animal walk");
+//   }
+// };
+
+// let rabbit = {
+//   jumps: true,
+// };
+
+// rabbit.__proto__ = animal;
+
+// // walk взят из прототипа
+// rabbit.walk(); // Animal walk
+
+
+
+
+
+
+
+
+
+// let animal = {
+//   eats: true,
+//   walk() {
+//     alert("Animal walk");
+//   }
+// };
+
+// let rabbit = {
+//   jumps: true,
+//   __proto__: animal
+// };
+
+// let longEar = {
+//   earLength: 10,
+//   __proto__: rabbit
+// };
+
+// // walk взят из цепочки прототипов
+// longEar.walk(); // Animal walk
+// alert(longEar.jumps); // true (из rabbit)
+
+
+
+
+
+
+
+
+
+// let head = {
+//   glasses: 1
+// };
+
+// let table = {
+//   pen: 3
+// };
+
+// let bed = {
+//   sheet: 1,
+//   pillow: 2
+// };
+
+// let pockets = {
+//   money: 2000
+// };
+
+
+// table.__proto__ = head;
+// bed.__proto__ = table;
+// pockets.__proto__ = bed;
+
+
+// console.log(pockets.pen);
+// console.log(bed.glasses);
+
+
+
+
+
+
+
+
+
+
+
+
+// let hamster = {
+//   stomach: [],
+
+//   eat(food) {
+    
+//     this.stomach.push(food);
+//   }
+// };
+
+// let speedy = {
+//   stomach: [],
+//   __proto__: hamster
+// };
+
+// let lazy = {
+//   stomach: [],
+//   __proto__: hamster
+// };
+
+// // Этот хомяк нашёл еду
+// speedy.eat("apple");
+// alert( speedy.stomach ); // apple
+
+// // У этого хомяка тоже есть еда. Почему? Исправьте
+// alert( lazy.stomach ); // apple
+
+
+
+
+
+
+
+
+
+
+// let hamster = {
+//   stomach: [],
+
+//   eat(food) {
+//     // присвоение значения this.stomach вместо вызова this.stomach.push
+//     this.stomach = [food];
+//   }
+// };
+
+// let speedy = {
+//    __proto__: hamster
+// };
+
+// let lazy = {
+//   __proto__: hamster
+// };
+
+// // Шустрый хомяк нашёл еду
+// speedy.eat("apple");
+// alert( speedy.stomach ); // apple
+
+// // Живот ленивого хомяка пуст
+// alert( lazy.stomach ); // <ничего>
+
+
+
+// const currentDate = new Date();
+// const targetDate = new Date();
+// let d = targetDate.setHours(10, 30, 0, 0); // Установить время на 10:30
+
+// function timeMachine(date, callback) {
+//   let secondsPassed = 0;
+//   let timerId; 
+
+//   // Создаем функцию для остановки таймера
+//   function stopTimeMachine() {
+//     clearTimeout(timerId); 
+//     console.log("Таймер остановлен!");
+//   }
+
+//   return function() {
+//     timerId = setTimeout(() => {
+//       callback.call(this, date); 
+//       secondsPassed++;
+
+//       if (secondsPassed >= 5) {
+//         clearTimeout(timerId);
+//         console.log(`Прошло ${secondsPassed} секунд`);
+//         return; 
+//       }
+//     }, 1000); 
+
+//     // Возвращаем функцию stopTimeMachine, чтобы можно было прервать таймер
+//     return stopTimeMachine;
+//   }
+// }
+
+// let newTimeMachine = timeMachine(d, function(date) {
+//   console.log("Текущее время:", date.toLocaleString());
+// });
+
+// // Запускаем "машину времени"
+// let stopTimer = newTimeMachine(); 
+
+// // Прерываем таймер через 3 секунды
+// setTimeout(stopTimer, 3000); 
+
+
+
+
+
+
+
+
+
+
+// function countdown(seconds, callback){
+//   let timerId;
+//   return function(){
+    
+      
+//     timerId = setInterval(() => {
+//       if(seconds < 0){
+//       clearInterval(timerId);
+//       return;
+//     } else {
+//       callback.call(this, seconds);
+//       seconds--;
+//     }}, 100);
+    
+
+//     return timerId;
+//     } 
+  
+    
+  
+  
+//   }
+
+
+
+
+// let count = countdown(10, function(seconds) {
+//   if (seconds > 0) {
+//     console.log(`Осталось ${seconds} секунд`);
+//   } else {
+//     console.log("Время вышло!");
+//   }
+// });
+
+
+// count();
+
+
+
+
+
+
+
+// let Animal = {
+//   name: "animal",
+//   type: "animal"
+// };
+
+// let Cat = {
+//   __proto__: Animal,
+//   sound: "meow",
+
+//   soundChange(newSound){
+//     this.sound = newSound;
+    
+//   }
+// };
+
+// let PersianCat = {
+//   __proto__: Cat
+// };
+
+
+
+// console.log(PersianCat.soundChange("purr"));
+
+
+
+
+
+
+
+// let Car = {
+//   model: "X5",
+//   brand: "BMW",
+
+//   start: function(bool){
+//     if(bool === true){
+//     console.log("Двигатель запущен!");
+//     } else {
+//       console.log("Двигатель запущен!(мощный)");
+//     }
+//   }
+// };
+
+
+// let myCar = {
+//   __proto__: Car
+// };
+
+
+// let yourCar = {
+//   __proto__: Car
+// };
+
+// myCar.start(true);
+// yourCar.start();
+
+
+
+
+
+
+
+
+// let Person = {
+//   speak(){
+//     console.log("Привет!");
+//   },
+
+//   constructor(name){
+//     this.name = name;
+//   }
+
+// };
+
+
+
+// function createPerson(){
+//   let person = {};
+//   person.__proto__ = Person;
+//   return person;
+// }
+
+
+// let person = createPerson();
+
+// person.constructor("John")
+// person.speak();
+
+// function createStudent(){
+//   let studentPerson = {};
+//   studentPerson.__proto__ = Person;
+//   studentPerson.studies = "student";
+//   return studentPerson;
+// }
+
+// let studentPerson = createStudent();
+
+// studentPerson.constructor("John");
+// studentPerson.speak();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                                                                     2
+
+// function Rabbit(name) {
+//   this.name = name;
+//   alert(name);
+// }
+
+// let rabbit = new Rabbit("White Rabbit");
+
+// let rabbit2 = new rabbit.constructor("Black Rabbit");
+
+
+
+
+
+
+
+
+
+
+// function Animal() {
+//   this.name = name;
+//   this.age = 0;
+
+//   this.speak = function(){
+//     console.log("Громкий звук");
+//   }
+// }
+
+// let animal = new Animal();
+// console.log(animal.name = "Rob");
+// console.log(animal.age = 3);
+
+
+
+// function Dog() {}
+
+// Dog.prototype = animal;
+
+// let dog = new Dog();
+
+// console.log(dog.name)
+
+// function GoldenRetriever() {}
+
+// GoldenRetriever.prototype = dog;
+
+// let goldenRetriever = new GoldenRetriever();
+
+// console.log(goldenRetriever.name)
+
+
+
+
+
+
+
+
+
+
+
+
+// function Vehicle(model){
+//   this.model = model;
+//   this.maxSpeed = 0;
+
+//   this.start = function(){
+//     console.log("Транспортное средство заведено!");
+//   }
+
+//   this.move = function(){
+//     console.log(`Движение с максимальной скоростью: ${this.maxSpeed}`);
+//   }
+// }
+
+// let car = new Vehicle("Pontiac");
+
+
+// console.log(car.maxSpeed = 120);
+// console.log(car.move());
+// console.log(car.start());
+
+// let fly = new car.constructor("Messerschmidt bf.109");
+
+// console.log(fly.maxSpeed = 500);
+// console.log(fly.move());
+// console.log(fly.start());
+
+// let tank = new car.constructor("M60 Patton");
+
+// console.log(tank.maxSpeed = 60);
+// console.log(tank.move());
+// console.log(tank.start());
+
+
+
+
+
+
+
+
+
+
+
+
+// function Person(){
+//   this.name = "";
+//   this.age = "";
+
+//   this.compare = function(otherPerson){
+//     if(this.name < otherPerson) return -1;
+//     else if(this.name === otherPerson) return 0;
+//     else if(this.name > otherPerson) return 1;
+//   }
+// }
+
+
+// let Alice = new Person();
+// Alice.name = "Alice";
+// Alice.age = 18;
+
+// let John = new Alice.constructor();
+// John.name = "Alice";
+// John.age = 21;
+
+// console.log(Alice.compare(John.name));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                                                                    3
+
+
+
+
+
+// function f() {
+//   alert("Hello!");
+// }
+
+// Function.prototype.defer = function(ms){
+//   setTimeout(() => new this, ms);
+// }
+
+// f.defer(5000); // выведет "Hello!" через 1 секунду
+
+
+
+
+
+
+
+
+
+
+// function f(a, b) {
+//   alert( a + b );
+// }
+
+// Function.prototype.defer = function(ms){
+//   let f = this;
+//   return function(...args) {
+//     setTimeout(() => f.apply(this, args), ms);
+//   }
+// };
+
+// f.defer(10000)(1, 2); // выведет 3 через 1 секунду.
+
+
+
+
+
+
+
+
+
+// const arr = [];
+
+// Array.prototype.add = function(element){
+//   for(let i = 0; i <= this.length; i++)
+//   if(this.length === 0){
+//     this[0] = element;
+//     return this;
+//   } else {
+//     this[this.length++] = element;
+//     return this;
+//   }
+// }
+
+// console.log(arr.add(2));
+// console.log(arr.add(1));
+// console.log(arr.add(3));
+// console.log(arr.add(8));
+// console.log(arr.add(78));
+// console.log(arr.add(11));
+
+
+
+
+
+// Array.prototype.remove = function(element){
+//   let next = 0;
+//   if(element){
+//     for(let i = element; i <= this.length-2; i++){
+//     next = i; 
+//     next++;
+//     this[i] = this[next--];
+
+//     if(i === this.length - 2){
+//       this.splice(this.length - 1, 1)
+//       }
+//     }
+
+    
+//     return this;
+//   }
+// }
+
+// console.log(arr.remove(1));
+
+
+
+
+
+
+
+
+
+//                                                         4
+
+
+
+
+// let dictionary = Object.create(null);
+
+// // ваш код, который добавляет метод dictionary.toString
+
+// dictionary.toString = function(){
+//   str = '';
+//   for(this.key in this){
+//     str += this.key + ','
+//   }
+
+//   return str;
+// };
+
+// Object.defineProperty(dictionary, "toString", {
+//   enumerable: false
+// });
+
+// // добавляем немного данных
+// dictionary.apple = "Apple";
+// dictionary.__proto__ = "test"; // здесь __proto__ -- это обычный ключ
+
+// // только apple и __proto__ выведены в цикле
+// for(let key in dictionary) {
+//   console.log(key); // "apple", затем "__proto__"
+// }
+
+// // ваш метод toString в действии
+// alert(dictionary); // "apple,__proto__"
+
+
+
+
+
+
+// let dictionary = Object.create(null, {
+//   toString: { // определяем свойство toString
+//     value() { // значение -- это функция
+//       return Object.keys(this).join();
+//     }
+//   }
+// });
+
+// dictionary.apple = "Apple";
+// dictionary.__proto__ = "test";
+
+// // apple и __proto__ выведены в цикле
+// for(let key in dictionary) {
+//   alert(key); // "apple", затем "__proto__"
+// }
+
+// // список свойств, разделённых запятой, выведен с помощью toString
+// alert(dictionary); // "apple,__proto__"
+
+
+
+
+
+
+// let animal = {
+//   eats: true
+// };
+
+// // создаём новый объект с прототипом animal
+// let rabbit = Object.create(animal);
+
+// alert(rabbit.eats); // true
+
+// alert(Object.getPrototypeOf(rabbit) === animal); // получаем прототип объекта rabbit
+
+// Object.setPrototypeOf(rabbit, {}); // заменяем прототип объекта rabbit на {}
+
+
+
+
+
+
+
+
+
+
+
+
+// const Calculator = {
+//   add: function(...calcAdd){
+//     let array = calcAdd.every(add => Array.isArray(add));
+//     if(array === true){
+//       let newArr = calcAdd.flat();
+//       return newArr;
+//     } else {
+//       let result;
+//       typeof calcAdd[0] === "string" ? result = '' : result = 0;
+//       return calcAdd.reduce((result, add) => {result += add; return result}, result);
+//     } 
+//   },
+
+//   divide: function(...calcDivide){
+//     for(let i = 0; i <= calcDivide.length; i++)
+//     if(Array.isArray(calcDivide[i])){
+//       let newDividedArr = calcDivide[i].map((div, j) => {return div / calcDivide[1]});
+//       return newDividedArr;
+//     } else {
+//       return calcDivide[0] / calcDivide[1];
+//     }
+//   }
+// };
+
+// let calc = Object.create(Calculator);
+// console.log(calc.add(1, 2)); // 3
+// console.log(calc.add("Hello", "World")); // "HelloWorld" 
+// console.log(calc.add([1, 2], [3, 4])); // [1, 2, 3, 4]
+// console.log(calc.divide(10, 2)); // 5 
+// console.log(calc.divide([2, 4], 2)); // [1, 2] 
+
+
+
+
+
+
+// const stringHelper = {}; 
+// stringHelper.prototype = {};
+
+
+// const text = "  this is a string  ";
+// // const reversed = stringHelper.prototype.reverse(text);  // "gnirts a si sihT"
+// stringHelper.prototype.capitalize = function(t){
+//   for(let i = 0, j = 0; i <= t.length - 1; i++, j++)
+//   if(typeof t.at(i) === "string" && t.at(i) !== " "){
+//     let Upper = t.at(i).toUpperCase();
+//     j++;
+//     let result = Upper + t.slice(j, t.length - 1);
+//     return result;
+//  }
+// }; 
+
+// console.log(stringHelper.prototype.capitalize(text));
+// // "This is a string"
+// // const wordCount = stringHelper.prototype.countWords(text);  // 4
+// // const cleanText = stringHelper.prototype.removeExtraSpaces(text);  // "This is a string"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                                                                    Классы
+
+
+
+
+
+// class User {
+
+//   constructor(name) {
+//     this.name = name;
+//   }
+
+//   sayHi() {
+//     alert(this.name);
+//   }
+
+// }
+
+// // Использование:
+// let user = new User("Иван");
+// user.sayHi();
+
+
+
+
+
+// class User {
+
+//   constructor(name) {
+//     // вызывает сеттер
+//     this.name = name;
+//   }
+
+//   get name() {
+//     return this._name;
+//   }
+
+//   set name(value) {
+//     if (value.length < 4) {
+//       alert("Имя слишком короткое.");
+//       return;
+//     }
+//     this._name = value;
+//   }
+
+// }
+
+// let user = new User("Иван");
+// alert(user.name); // Иван
+
+// user = new User(""); // Имя слишком короткое.
+
+
+
+
+
+
+
+
+
+
+// function Clock({ template }) {
+  
+//   let timer;
+
+  // function render() {
+  //   let date = new Date();
+
+  //   let hours = date.getHours();
+  //   if (hours < 10) hours = '0' + hours;
+
+  //   let mins = date.getMinutes();
+  //   if (mins < 10) mins = '0' + mins;
+
+  //   let secs = date.getSeconds();
+  //   if (secs < 10) secs = '0' + secs;
+
+  //   let output = template
+  //     .replace('h', hours)
+  //     .replace('m', mins)
+  //     .replace('s', secs);
+
+  //   console.log(output);
+  // }
+
+  // this.stop = function() {
+  //   clearInterval(timer);
+  // };
+
+  // this.start = function() {
+  //   render();
+  //   timer = setInterval(render, 1000);
+  // };
+
+// }
+
+// let clock = new Clock({template: 'h:m:s'});
+// clock.start();
+
+
+
+
+
+
+
+
+
+// class Clock {
+//   constructor({ template }){
+//     this.template = template;
+//   }
+
+//   render() {
+//     let date = new Date();
+
+//     let hours = date.getHours();
+//     if (hours < 10) hours = '0' + hours;
+
+//     let mins = date.getMinutes();
+//     if (mins < 10) mins = '0' + mins;
+
+//     let secs = date.getSeconds();
+//     if (secs < 10) secs = '0' + secs;
+
+//     let output = this.template
+//       .replace('h', hours)
+//       .replace('m', mins)
+//       .replace('s', secs);
+
+//     console.log(output);
+//   }
+
+//   stop() {
+//     clearInterval(this.timer);
+//   };
+
+//   start() {
+//     this.render();
+//     this.timer = setInterval(() => this.render(), 1000);
+//   };
+
+
+// }
+
+
+// let clock = new Clock({template: 'h:m:s'});
+
+// clock.start();
+
+
+
+
+
+
+
+
+// class User{
+//   constructor(name){
+//     this.name = name;
+//   }
+
+//   sayHello(gr){
+//     console.log(`${gr}, ${this.name}`);
+//   }
+
+ 
+// }
+
+
+
+// let user = new User("Иван");
+// //let greet = prompt("Введите приветствие");
+// user.sayGoodbye = user.sayHello.bind(user);
+// user.sayGoodbye("Прощай");
+
+
+
+
+
+// class GuessingGame{
+//   constructor() {
+//     this.secretNumber = 0;
+//     this.attempts = 0;
+//     this.timer = 0;
+//     this.isRunning = true;
+//   }
+
+
+//   start(){
+  
+//   this.min = Math.ceil(0);
+//   this.max = Math.floor(100);
+//   this.secretNumber = Math.floor(Math.random() * (this.max - this.min + 1) + this.min); 
+
+//   this.attempts = 10;
+//   this.isRunning = true;
+
+
+
+//   this.timer = setInterval(() => {
+//     this.attempts--;
+//     console.log("Осталось попыток:", this.attempts);
+//     if (this.attempts === 0) {
+//       this.stop();
+//       console.log("Время вышло! Тайное число:", this.secretNumber);
+//     }
+//   }, 1000);
+
+
+//   }
+
+
+//   guess(number){
+//     this.number = number;
+//     if(this.attempts === 10 && this.number === this.secretNumber) this.checkWin();
+//     if(this.number === this.secretNumber){
+//       this.stop();
+//     } else {
+//       this.attempts--;
+//       if(this.secretNumber > number) console.log("Число больше");
+//       if(this.secretNumber < number) console.log("Число меньше");
+      
+//       this.number = +prompt("Попробуйте ещё раз");
+//       return this.guess(this.number);
+//     }
+
+//     if(this.attempts === 0) this.stop();
+//   }
+
+//   stop(){
+//     this.isRunning = false;
+//     clearInterval(this.timer);
+//   }
+
+//   checkWin(){   
+//       console.log("Вы выиграли!");
+//       this.stop();
+//   }
+
+
+// }
+
+// let game = new GuessingGame();
+
+// game.start();
+// console.log(game.guess(+prompt("Введите число: ")));
+// game.stop();
+
+
+
+
+
+
+
+
+
+
+
+// function slowFunction() {
+//   for (let i = 0; i < 1e7; i++) {} // Имитация долгой работы
+//   return "Finished!";
+// }
+
+
+// function measureExecutionTime(func){
+//   let start = 0;
+//   let end = 0;
+//   let result = 0;
+//   return function(){
+//     start = Date.now();
+
+//     console.log(func.call(this));
+
+//     end = Date.now();
+//     result = end - start;
+//     return result;
+//   }
+// }
+
+// const measuredSlowFunction = measureExecutionTime(slowFunction);
+// console.log(measuredSlowFunction()); // Должно вывести время выполнения и "Finished!"
+
+
+
+
+
+
+
+// const car = {
+//   brand: "Toyota",
+//   model: "Camry",
+//   drive: function() {
+//       return `Driving a ${this.brand} ${this.model}.`;
+//   }
+// };
+
+// function testDrive(obj) {
+//   const boundDrive = obj.drive.bind(obj); // Используйте bind для привязки контекста
+//   console.log(boundDrive()); // Должно вывести "Driving a Toyota Camry."
+// }
+
+// testDrive(car);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// class AdvancedTimer{
+//   constructor(){
+//     this.timer = 0;
+//     this.count = 0;
+//     this.duration = 0;
+//     this.interval = 0;
+//   }
+
+//   start(duration, interval){
+//     this.duration = duration;
+//     this.interval = interval;
+//     this.timer = setInterval(() => {
+//       if(this.count++ === (duration / interval)){
+//         clearInterval(this.timer);
+//         console.log("Таймер завершён!");
+//         return;
+//       }
+//       console.log("Таймер запущен!");
+
+//     }, interval);
+
+    
+//   }
+
+//   pause(){
+//     clearInterval(this.timer);
+//   }
+
+//   reset(){
+//     this.timer = 0;
+//     this.count = 0;
+//     this.start(this.duration, this.interval);
+//   }
+// }
+
+
+
+
+// const timer = new AdvancedTimer();
+// timer.start(5000, 1000); // Должен выводить "Таймер запущен!" каждую секунду и завершиться через 5 секунд.
+// setTimeout(() => timer.pause(), 3000); // Приостановить через 3 секунды.
+// setTimeout(() => timer.reset(), 4000); // Сбросить через 4 секунды.
+
+
+
+
+
+
+// function checkAccess(user, resource, callback) {
+//   return function(){
+//     if(user.role === 'admin'){
+//       callback.call(user, resource);
+//     } else {
+//       console.log("Отказано в доступе");
+//     }
+//   }
+// }
+
+// function accessResource(resource) {
+//   console.log(`Доступ  к  ресурсу  ${resource}  получен!`);
+// }
+
+// const user = {
+//   role: 'casual'
+// };
+
+// let check = checkAccess(user, 'secretData', accessResource); //  Доступ  предоставлен,  вызов  accessResource  с  контекстом  user
+// check();
+
+
+
+
+
+
+
+
+// class Animal {
+//   constructor(name) {
+//     this.speed = 0;
+//     this.name = name;
+//   }
+//   run(speed) {
+//     this.speed = speed;
+//     alert(`${this.name} бежит со скоростью ${this.speed}.`);
+//   }
+//   stop() {
+//     this.speed = 0;
+//     alert(`${this.name} стоит неподвижно.`);
+//   }
+// }
+
+// let animal = new Animal("Мой питомец");
+
+
+
+// class Rabbit extends Animal {
+//   hide() {
+//     alert(`${this.name} прячется!`);
+//   }
+// }
+
+// let rabbit = new Rabbit("Белый кролик");
+
+// rabbit.run(5); // Белый кролик бежит со скоростью 5.
+// rabbit.hide(); // Белый кролик прячется!
+
+
+
+
+
+
+
+// class Animal {
+
+//   constructor(name) {
+//     this.name = name;
+//   }
+
+// }
+
+// class Rabbit extends Animal {
+//   constructor(name) {
+//     super(name);
+//     this.created = Date.now();
+//   }
+// }
+
+// let rabbit = new Rabbit("Белый кролик"); // Error: this is not defined
+// alert(rabbit.name);
+
+
+
+
+
+
+
+// function log(targetFunction) {
+//   let listOfEl = "";
+//   let count = new Map();
+//   let resultF;
+//   return function(...arguments){
+
+//     for(let el of arguments){
+//       listOfEl += `${el}, `;
+//     }
+    
+//     if (listOfEl.lastIndexOf(",")) {
+//       listOfEl = listOfEl.slice(0, listOfEl.lastIndexOf(","));
+//     }
+    
+//     resultF = `Была вызвана функция с именем ${targetFunction.name} и фргументами ${listOfEl}`;
+
+//     if(!count.has(resultF)){
+//       count.set(resultF,`Результат её выполнения ${targetFunction.apply(this, arguments)}`);
+//     }
+
+//     return count;
+//   }
+// }
+
+// function myFunction(a, b) {
+//   return a + b;
+// }
+
+// const loggedFunction = log(myFunction);
+// loggedFunction(2, 3); //
+
+
+
+
+
+
+
+// class Animal{
+//   constructor(name, type){
+//     this.name = name;
+//     this.type = type;
+//     this.Base = new Map();
+//   }
+
+//   speak(){
+//     console.log(`Я - ${this.type}`);
+//   }
+
+//   move(){
+//     console.log(`${this.name} движется`);
+//   }
+
+//   dataBase(){
+//     if(!this.Base.has(this.name)){
+//       this.Base.set(this.name, this.type);
+//     }
+//   }
+// }
+
+// class Dog extends Animal{
+//   constructor(name, type){
+//     super(name);
+//     this.type = type;
+//   }
+
+  
+// }
+
+
+
+// let dog = new Dog("Bobik", "собака");
+// dog.move();
+// dog.speak();
+// dog.dataBase();
+
+
+
+
+
+let Sum = {};
+
+class Product{
+  constructor(name, price, description, stock, category){
+    this.name = name;
+    this.price = price;
+    this.description = description;
+    this.stock = stock;
+    this.category = category;
+    this.GeneralInformation = new Map();
+    this.general = {};
+  }
+
+  displayInfo(){
+    
+      console.log(`название: ${this.name}
+        цена: ${this.price}
+        описание: ${this.description}
+        количество: ${this.stock}
+        категория: ${this.category}`);
+    
+  }
+
+  updateStock(amount){
+    let change = prompt("Введите категорию товаров (Телефоны, Телевизоры, Ноутбуки): ");
+    if(change !== null && change !== ''){
+    if(this.GeneralInformation.has(change)){
+      this.general.stock = amount;
+      this.GeneralInformation.set(change, this.general) 
+    }
+  }
+  }
+
+  addToBasket(obj){
+    this.general = obj;
+    if(!this.GeneralInformation.has(this.category)){
+      this.GeneralInformation.set(this.category, this.general);
+    } else {
+        this.GeneralInformation.set(this.category, this.general);
+    }
+  }
+
+}
+
+
+class Phone extends Product{
+  constructor(name, price, description, stock, category, brand, model, screenSize, cameraResolution){
+    super(name, price, description, stock, category);
+    this.brand = brand;
+    this.model = model;
+    this.screenSize = screenSize;
+    this.cameraResolution = cameraResolution;
+  }
+
+  displayInfo(){
+    super.displayInfo();
+    console.log(`компания: ${this.brand}
+      модель: ${this.model}
+      разрешение экрана: ${this.screenSize}
+      разрешение камеры: ${this.cameraResolution}`);
+  }
+
+  updateStock(amount){
+    super.updateStock(amount);
+  }
+
+  addToBasket(){
+    this.general = {name: this.name, 
+      price: this.price, 
+      description: this.description, 
+      stock: this.stock, 
+      category: this.category,
+      brand: this.brand,
+      model: this.model,
+      screenSize: this.screenSize,
+      cameraResolution: this.cameraResolution
+    };
+
+    super.addToBasket(this.general);
+  }
+}
+
+class Laptop extends Product{
+  constructor(name, price, description, stock, category, brand, processor, ram, storageSize, screenResolution){
+    super(name, price, description, stock, category);
+    this.brand = brand;
+    this.processor = processor;
+    this.ram = ram;
+    this.storageSize = storageSize;
+    this.screenResolution = screenResolution;
+  }
+
+  displayInfo(){
+    super.displayInfo();
+    console.log(`компания: ${this.brand}
+      Процессор: ${this.processor}
+      ОЗУ: ${this.ram}
+      размер хранилища: ${this.storageSize}
+      размер экрана: ${this.screenResolution}`);
+  }
+
+  updateStock(amount){
+    super.updateStock(amount);
+  }
+
+  addToBasket(){
+    this.general = {name: this.name, 
+      price: this.price, 
+      description: this.description, 
+      stock: this.stock, 
+      category: this.category,
+      brand: this.brand,
+      processor: this.processor,
+      ram: this.ram,
+      storageSize: this.storageSize,
+      screenResolution: this.screenResolution
+    };
+
+    super.addToBasket(this.general);
+  }
+}
+
+class TV extends Product{
+  constructor(name, price, description, stock, category, screenDiagonal, resolution, smartTV, soundSystem){
+    super(name, price, description, stock, category);
+    this.screenDiagonal = screenDiagonal;
+    this.resolution = resolution;
+    this.smartTV = smartTV;
+    this.soundSystem = soundSystem;
+  }
+
+  displayInfo(){
+    super.displayInfo();
+    console.log(`Диагональ экрана: ${this.screenDiagonal}
+      разрешение экрана: ${this.resolution}
+      Функция "smartTV": ${this.smartTV}
+      аудио-система: ${this.soundSystem}`);
+  }
+
+  updateStock(amount){
+    super.updateStock(amount);
+  }
+
+  addToBasket(){
+    this.general = {name: this.name, 
+      price: this.price, 
+      description: this.description, 
+      stock: this.stock, 
+      category: this.category,
+      screenDiagonal: this.screenDiagonal,
+      resolution: this.resolution,
+      smartTV: this.smartTV,
+      soundSystem: this.soundSystem
+    };
+
+    super.addToBasket(this.general);
+  }
+}
+
+function sumCategory(allGadgetsOfCategory){
+  let sum = 0;
+  for(let i = 0; i <= products.length - 1; i++){
+    if(products[i].GeneralInformation.has(allGadgetsOfCategory)){
+      infoGadget = products[i].GeneralInformation.get(allGadgetsOfCategory);
+      for(const key in infoGadget){
+        if(key === "stock")
+        sum += infoGadget[key];
+        
+      }
+      
+    }
+    
+  }
+  return sum;
+}
+
+function searchProduct(gadget){
+  let specifications = `Характеристики ${gadget}: `;
+  for(let i = 0; i <= products.length - 1; i++){
+  for(let value of products[i].GeneralInformation.values())
+  if(value.name.includes(gadget)){
+    for(const key in value){
+      specifications += `${value[key]}, `;
+    }
+    console.log(specifications);
+  }
+}
+}
+
+function showProductsByCategory(allGadgetsOfCategory){
+  let info = `Информация об устройстве: `;
+  let infoGadget;
+  for(let i = 0; i <= products.length - 1; i++){
+    if(products[i].GeneralInformation.has(allGadgetsOfCategory)){
+      infoGadget = products[i].GeneralInformation.get(allGadgetsOfCategory);
+      for(const key in infoGadget){
+        info += `${infoGadget[key]}, `;
+      }
+      console.log(info);
+    }
+  }
+}
+
+
+function sumOfCategory(func){
+  let exit = false;
+  return function(c){
+    
+    let category = prompt("Введите категорию товаров (Телефоны, Телевизоры, Ноутбуки): ");
+    // если нам нужно подсчитать уже существующее свойство 
+    if(!(category in Sum)){                                                                                                                                                                                                        
+      Sum[category] = `В наличии ${func.call(this, category)} товаров этой категории`               
+    } else {
+      if(category in Sum){
+      while(!exit){                                                                                 
+        c = prompt("Введите категорию товаров ещё раз (Телефоны, Телевизоры, Ноутбуки): ");  
+        if(c in Sum) break;                                                         
+      } 
+      Sum[c] = `В наличии ${func.call(this, category)} товаров этой категории`;
+    }      
+    }                                                                                            
+    /////////////////////////////////////////////////////////////////////////////////////////                                                                                   
+    
+
+    return Sum;
+  }
+}
+
+const phone1 = new Phone("iPhone 14 Pro", 1000, "Премиальный смартфон", 50, "Телефоны", "Apple", "iPhone 14 Pro", 6.1, 48);
+const laptop1 = new Laptop("MacBook Air", 1200, "Легкий и мощный ноутбук", 20, "Ноутбуки", "Apple", "M2", 8, 256, "2560x1600");
+const tv1 = new TV("Samsung QLED 55", 800, "Превосходный телевизор 4K", 10, "Телевизоры", 55, "4K", true, "Dolby Atmos");
+const phone2 = new Phone("iPhone 14 Pro", 1000, "Премиальный смартфон", 50, "Телефоны", "Apple", "iPhone 14 Pro", 6.1, 48);
+
+const products = [phone1, laptop1, tv1, phone2];
+
+phone1.displayInfo();
+phone1.addToBasket();
+phone2.displayInfo();
+phone2.addToBasket();
+laptop1.displayInfo();
+laptop1.addToBasket();
+tv1.displayInfo();
+tv1.addToBasket();
+searchProduct("Samsung QLED 55"); 
+showProductsByCategory("Телевизоры");
+
+
+let sum = sumOfCategory(sumCategory);
+
+sum();
+sum("Телефоны");
